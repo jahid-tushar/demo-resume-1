@@ -69,7 +69,7 @@ Tableau, SPSS, Adobe Illustrator, Adobe Photoshop, MS Office
 - Produced disease-risk and health facility maps for policy support.
 
 ---
-(image/Advanced Analysis.jpg)
+![LinkedIn Dashboard](image/Advanced Analysis.jpg)
 ### GIS Business Development Executive  
 **Shahriar GIS School** | May 2019 – Aug 2024 (Part-time)
 
