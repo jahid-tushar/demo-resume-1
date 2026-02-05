@@ -5,7 +5,7 @@
 
 ---
 
-![LinkedIn Dashboard](image/Advanced Analysis.jpg)
+(image/Advanced Analysis.jpg)
 
 ## 👤 Professional Summary
 
