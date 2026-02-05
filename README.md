@@ -5,6 +5,8 @@
 
 ---
 
+![LinkedIn Dashboard](/image/Advanced Analysis.jpg)
+
 ## 👤 Professional Summary
 
 Results-driven GIS and Remote Sensing specialist with strong expertise in spatial analysis, data visualization, geospatial modeling, and quality control. Experienced in leading technical teams, managing large-scale mapping projects, and delivering high-accuracy geospatial databases under strict deadlines.
