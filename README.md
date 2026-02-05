@@ -5,7 +5,7 @@
 
 ---
 
-(image/Advanced Analysis.jpg)
+
 
 ## 👤 Professional Summary
 
