@@ -288,30 +288,6 @@
         }
 
 
-        /* Zig-zag alignment for Featured Work */
-        #featured .row.g-4 > div:nth-child(-n+3) {
-            margin-left: auto;
-        }
-        
-        #featured .row.g-4 > div:nth-child(n+4):nth-child(-n+6) {
-            margin-right: auto;
-        }
-        
-        #featured .row.g-4 > div:nth-child(n+7):nth-child(-n+9) {
-            margin-left: auto;
-        }
-        
-        /* Optional smooth animation */
-        #featured .row.g-4 > div {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-        
-        #featured .row.g-4 > div.visible-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         
     </style>
@@ -997,23 +973,6 @@ document.addEventListener('DOMContentLoaded', function () {
         headingObserver.observe(featuredHeading);
     }
 
-
-        // Simple scroll animation for featured cards
-    const featuredCards = document.querySelectorAll('#featured .row.g-4 > div');
-    
-    const cardObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible-card');
-            }
-        });
-    }, { threshold: 0.15 });
-    
-    featuredCards.forEach(card => {
-        cardObserver.observe(card);
-    });
-
-
 </script>
 
 <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
@@ -1037,8 +996,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
-
-
 
 
 
