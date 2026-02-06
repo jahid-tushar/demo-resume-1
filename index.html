@@ -175,7 +175,9 @@
             text-align: center;
         }
 
-        /* Featured Work / Gallery styles */
+        
+
+        /* Featured Work / Gallery styles - Consistent & Future-Proof Grid */
         .gallery-card {
             position: relative;
             overflow: hidden;
@@ -183,43 +185,63 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.12);
             transition: all 0.45s ease;
             background: white;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        .gallery-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.22);
-        }
-        .gallery-img {
+
+        .gallery-card .gallery-img-wrapper {
+            position: relative;
             width: 100%;
-            height: auto;
-            display: block;
+            padding-top: 75%;                   /* 4:3 aspect ratio – change to 56.25% for wider (16:9) */
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .gallery-card .gallery-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.6s ease;
         }
+
         .gallery-card:hover .gallery-img {
             transform: scale(1.08);
         }
+
         .gallery-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.65) 40%, transparent 100%);
             color: white;
-            padding: 1.5rem 1.25rem 1rem;
+            padding: 1.4rem 1.25rem 1.25rem;
             transition: all 0.4s ease;
-            opacity: 0.92;
+            min-height: 110px;
         }
-        .gallery-card:hover .gallery-overlay {
-            background: linear-gradient(to top, rgba(0,107,166,0.88), transparent);
-        }
+
         .gallery-title {
-            font-size: 1.35rem;
+            font-size: 1.24rem;
             font-weight: 700;
-            margin-bottom: 0.35rem;
+            line-height: 1.38;
+            margin: 0 0 0.6rem 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        .gallery-desc {
-            font-size: 0.96rem;
-            opacity: 0.95;
-            margin-bottom: 0.4rem;
+
+        /* Make grid items stretch cards to equal height */
+        .row.g-4 > div {
+            display: flex;
+        }
+
+        .row.g-4 > div .gallery-card {
+            flex: 1;
         }
 
         @media (max-width: 991px) {
@@ -302,15 +324,18 @@
 
         <!-- Gallery Grid -->
         <div class="row g-4">
+            
             <!-- Project 1 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Advanced Analysis.jpg"
                      data-title="Advanced Spatial Analysis & Modeling"
                      data-desc="Multi-source data integration, change detection, LULC classification, and geospatial modeling using satellite imagery and UAV-derived products.">
-                    <img src="GIS and RS_Experience_Collage/Advanced Analysis.jpg"
-                         alt="Advanced Spatial Analysis & Modeling"
-                         class="gallery-img">
+                    <div class="gallery-img-wrapper">
+                        <img src="GIS and RS_Experience_Collage/Advanced Analysis.jpg"
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
+                    </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Advanced Spatial Analysis & Modeling</div>
                     </div>
@@ -322,10 +347,12 @@
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Study Area Mapping with advance analysis and INTERACTIVE Diagram.jpg"
                      data-title="Geospatial Analysis of Bangladesh: Environment, Health & Urban Insights"
-                     data-desc="Advanced GIS portfolio on Bangladesh and Dhaka: land cover change, COVID-19 hotspots, flood risk modeling, and historical mapping.">
-                    <img src="GIS and RS_Experience_Collage/Study Area Mapping with advance analysis and INTERACTIVE Diagram.jpg"
-                         alt="Geospatial Analysis of Bangladesh"
-                         class="gallery-img">
+                     data-desc="An advanced GIS portfolio on Bangladesh and Dhaka, covering land cover change, COVID-19 hotspot analysis, flood risk modeling, and historical mapping. It highlights expertise in spatial analysis, geostatistics, and integrated GIS workflows for environmental and urban planning.">
+                    <div class="gallery-img-wrapper">
+                        <img src="GIS and RS_Experience_Collage/Study Area Mapping with advance analysis and INTERACTIVE Diagram.jpg"
+                             alt="Study Area Mapping with advance analysis and INTERACTIVE Diagram"
+                             class="gallery-img">
+                    </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Geospatial Analysis of Bangladesh: Environment, Health & Urban Insights</div>
                     </div>
@@ -336,27 +363,32 @@
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Image Classification.jpg"
-                     data-title="Urban Evolution Unveiled: Multi-Decade LULC Transformation in Dhaka (1972–2019)"
-                     data-desc="Supervised classification and change detection using Landsat imagery, showing dramatic shifts from vegetation/barren land to built-up areas in Dhaka City Corporation.">
-                    <img src="GIS and RS_Experience_Collage/Image Classification.jpg"
-                         alt="Urban Evolution Dhaka"
-                         class="gallery-img">
+                     data-title="Urban Evolution Unveiled: Multi-Decade Land Use & Land Cover Transformation in Dhaka Metropolitan City (1972–2019)"
+                     data-desc="A comprehensive supervised classification and change detection analysis using Landsat imagery, illustrating dramatic shifts from vegetation and barren land to rapid settlement expansion in Dhaka City Corporation (DCC) areas, highlighting urbanization trends and environmental impacts over nearly five decades.">
+                    <div class="gallery-img-wrapper">
+                        <img src="GIS and RS_Experience_Collage/Image Classification.jpg"
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
+                    </div>
                     <div class="gallery-overlay">
-                        <div class="gallery-title">Urban Evolution Unveiled: Multi-Decade LULC Transformation in Dhaka (1972–2019)</div>
+                        <div class="gallery-title">Urban Evolution Unveiled: Multi-Decade Land Use & Land Cover Transformation in Dhaka Metropolitan City (1972–2019)</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Add the remaining projects in the same pattern -->
             <!-- Project 4 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Digitizng.jpg"
-                     data-title="Precision Cartography: Georeferencing, Digitization & Map Composition"
-                     data-desc="Professional GIS workflows: georeferencing rasters, digitizing administrative boundaries, layered map layouts with legends, scale bars, and features like Sundarban compartments.">
-                    <img src="GIS and RS_Experience_Collage/Digitizng.jpg" alt="Precision Cartography" class="gallery-img">
+                     data-title="Precision Cartography in Action: Georeferencing, Digitization, and Advanced Map Composition Using ArcMap"
+                     data-desc="Step-by-step demonstration of professional GIS workflows, including georeferencing raster images, digitizing administrative boundaries (e.g., Upazila maps), creating layered layouts with legends, scale bars, and north arrows, and visualizing complex features like Sundarban compartments and range offices.">
+                    <div class="gallery-img-wrapper">
+                        <img src="GIS and RS_Experience_Collage/Digitizng.jpg"
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
+                    </div>
                     <div class="gallery-overlay">
-                        <div class="gallery-title">Precision Cartography: Georeferencing, Digitization & Map Composition</div>
+                        <div class="gallery-title">Precision Cartography in Action: Georeferencing, Digitization, and Advanced Map Composition Using ArcMap</div>
                     </div>
                 </div>
             </div>
@@ -365,11 +397,15 @@
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Attractive Map 2.jpg"
-                     data-title="Multi-Scale Satellite-Derived Maps & Visualizations"
-                     data-desc="Integration of night-time lights, high-res satellite imagery, urban extents, river networks, and regional connectivity across Bangladesh and South Asia.">
-                    <img src="GIS and RS_Experience_Collage/Attractive Map 2.jpg" alt="Multi-Scale Maps" class="gallery-img">
+                     data-title="From Global Perspectives to Local Insights: Satellite-Derived Maps and Multi-Scale Geospatial Visualizations"
+                     data-desc="Stunning integration of night-time lights, high-resolution satellite imagery, and thematic overlays depicting urban extents, river networks, and regional connectivity across Bangladesh, South Asia, and comparative global/Dhaka city views.">
+                    <div class="gallery-img-wrapper">
+                        <img src="GIS and RS_Experience_Collage/Attractive Map 2.jpg"
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
+                    </div>
                     <div class="gallery-overlay">
-                        <div class="gallery-title">Multi-Scale Satellite-Derived Maps & Visualizations</div>
+                        <div class="gallery-title">From Global Perspectives to Local Insights: Satellite-Derived Maps and Multi-Scale Geospatial Visualizations</div>
                     </div>
                 </div>
             </div>
@@ -378,11 +414,15 @@
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Collecting Geolocatoions SOP.jpg"
-                     data-title="Geospatial Data Processing & 3D Exploration in Google Earth Pro"
-                     data-desc="Handling coordinates in Excel, importing to Google Earth Pro, 3D terrain views, exaggeration, and historical imagery comparison.">
-                    <img src="GIS and RS_Experience_Collage/Collecting Geolocatoions SOP.jpg" alt="Geospatial Data Processing" class="gallery-img">
+                     data-title="Seamless Geospatial Data Processing: Geocoding, Coordinate Conversion, and 3D Terrain Exploration in Google Earth Pro"
+                     data-desc="Advanced techniques for handling large datasets in Excel (find/replace, decimal degree formatting), importing coordinates into Google Earth Pro, configuring 3D views, terrain exaggeration, and historical imagery comparison for precise location-based analysis and visualization.">
+                    <div class="gallery-img-wrapper">
+                        <img src="GIS and RS_Experience_Collage/Collecting Geolocatoions SOP.jpg"
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
+                    </div>
                     <div class="gallery-overlay">
-                        <div class="gallery-title">Geospatial Data Processing & 3D Exploration in Google Earth Pro</div>
+                        <div class="gallery-title">Seamless Geospatial Data Processing: Geocoding, Coordinate Conversion, and 3D Terrain Exploration in Google Earth Pro</div>
                     </div>
                 </div>
             </div>
@@ -391,11 +431,15 @@
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Attractive Map.jpg"
-                     data-title="Demographic & Health Insights: Population Density & COVID-19 Mapping"
-                     data-desc="Kernel density heat maps of 60+ population and COVID-19 cases in Dhaka and Bangladesh for public health analysis.">
-                    <img src="GIS and RS_Experience_Collage/Attractive Map.jpg" alt="Health Insights Mapping" class="gallery-img">
+                     data-title="Demographic & Health Insights Through GIS: 60+ Population Density and COVID-19 Case Distribution in Dhaka & Bangladesh"
+                     data-desc="Kernel density heat maps and point-based visualizations revealing vulnerable elderly populations (60+ age group) and confirmed COVID-19 cases across administrative units in Dhaka Metropolitan City (DMC) and nationwide, using HDX and social media-sourced data for public health decision support.">
+                    <div class="gallery-img-wrapper">
+                        <img src="GIS and RS_Experience_Collage/Attractive Map.jpg"
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
+                    </div>
                     <div class="gallery-overlay">
-                        <div class="gallery-title">Demographic & Health Insights: Population Density & COVID-19 Mapping</div>
+                        <div class="gallery-title">Demographic & Health Insights Through GIS: 60+ Population Density and COVID-19 Case Distribution in Dhaka & Bangladesh</div>
                     </div>
                 </div>
             </div>
@@ -404,12 +448,15 @@
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Logo Poster Banner.jpg"
-                     data-title="Geospatial Training & Education Impact Poster Design"
-                     data-desc="This dynamic promotional collage is a high-energy digital marketing poster designed for GIS training programs. Built around a collage-style layout, it layers multiple course panels, pricing tables, instructor highlights, and thematic visuals into one cohesive composition. A rich green-blue palette, inspired by satellite imagery and geospatial technology, creates an immediate connection to mapping and location intelligence, while bright orange accents draw the eye to key discount offers and urgency elements like “Save!” banners and limited-seat calls-to-action.
-The design employs strong visual hierarchy through bold sans-serif headlines, high-contrast pricing comparisons (regular vs. discounted rates), and repeated personal branding elements including professional portraits and credential badges. Backgrounds feature subtle aerial and night-light map textures that reinforce the subject matter without overwhelming the content. Scattered icons—globes, graduation caps, play buttons, and QR codes—guide the viewer toward enrollment while maintaining a sense of abundance and accessibility.">
-                    <img src="GIS and RS_Experience_Collage/Logo Poster Banner.jpg" alt="Geospatial Training" class="gallery-img">
+                     data-title="Building Geospatial Excellence: Designing Live Training, ArcGIS Mastery Courses & Global Learner Impact Posters"
+                     data-desc="Collage of instructor-led live sessions, course highlights (ArcMap, ArcGIS Pro, Python/ArcPy, Web GIS), certification offers, international awards, and student testimonials, showcasing journey in delivering high-quality, accessible GIS education to learners in 180+ countries.">
+                    <div class="gallery-img-wrapper">
+                        <img src="GIS and RS_Experience_Collage/Logo Poster Banner.jpg"
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
+                    </div>
                     <div class="gallery-overlay">
-                        <div class="gallery-title">Geospatial Training & Education Impact Poster Design </div>
+                        <div class="gallery-title">Building Geospatial Excellence: Designing Live Training, ArcGIS Mastery Courses & Global Learner Impact Posters</div>
                     </div>
                 </div>
             </div>
@@ -418,7 +465,6 @@ The design employs strong visual hierarchy through bold sans-serif headlines, hi
     </div>
 </section>
 
-<!-- Shared Modal (place this just before </body> or after footer) -->
 <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
@@ -844,34 +890,50 @@ The design employs strong visual hierarchy through bold sans-serif headlines, hi
 
     // ────────────────────────────────────────────────
     // NEW: Dynamic modal content for featured projects
-    document.addEventListener('DOMContentLoaded', function () {
-        const projectModal = document.getElementById('projectModal');
-        
-        if (projectModal) {
-            projectModal.addEventListener('show.bs.modal', function (event) {
-                // The card that was clicked
-                const card = event.relatedTarget;
-                
-                // Get data from the card's data-* attributes
-                const imgSrc = card.getAttribute('data-img');
-                const title = card.getAttribute('data-title');
-                const desc = card.getAttribute('data-desc');
-                
-                // Update the modal
-                const modalImg = projectModal.querySelector('#modalImage');
-                const modalTitle = projectModal.querySelector('#modalTitle');
-                const modalDesc = projectModal.querySelector('#modalDesc');
-                
-                modalImg.src = imgSrc;
-                modalTitle.textContent = title;
-                modalDesc.textContent = desc;
-            });
-        }
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    const projectModal = document.getElementById('projectModal');
+    if (projectModal) {
+        projectModal.addEventListener('show.bs.modal', function (event) {
+            const card = event.relatedTarget;
+            const imgSrc = card.getAttribute('data-img');
+            const title = card.getAttribute('data-title');
+            const desc = card.getAttribute('data-desc');
+            
+            const modalImg = projectModal.querySelector('#modalImage');
+            const modalTitle = projectModal.querySelector('#modalTitle');
+            const modalDesc = projectModal.querySelector('#modalDesc');
+            
+            modalImg.src = imgSrc;
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
+        });
+    }
+});
     // ────────────────────────────────────────────────
 </script>
+
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="Project Image" class="img-fluid mb-4" style="max-height: 70vh; object-fit: contain;">
+                <h4 id="modalTitle" class="mb-3"></h4>
+                <p id="modalDesc" class="lead text-muted"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
+
 
 
 
