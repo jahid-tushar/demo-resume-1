@@ -253,6 +253,43 @@
             .profile-img { width: 150px; height: 150px; }
             .section-title { font-size: 2.2rem; }
         }
+
+
+
+                /* Featured Work Animated Heading */
+        .featured-heading {
+            margin-bottom: 3rem;
+        }
+        
+        .featured-line {
+            font-family: 'Playfair Display', serif;
+            opacity: 0;
+            transform: translateX(80px);
+            transition: all 1s ease;
+        }
+        
+        .left-line {
+            text-align: left;
+            font-size: 2.8rem;
+            transform: translateX(-100px);
+        }
+        
+        .right-line {
+            text-align: right;
+            font-size: 1.2rem;
+            max-width: 720px;
+            margin-left: auto;
+            color: var(--gray);
+        }
+        
+        .featured-line.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+
+
+        
     </style>
 </head>
 <body>
@@ -317,10 +354,13 @@
 <!-- Featured Work -->
 <section id="featured" class="section bg-light">
     <div class="container">
-        <h2 class="section-title text-center">Featured Work</h2>
-        <p class="text-center lead mb-5" style="max-width: 720px; margin-left: auto; margin-right: auto;">
+    <div class="featured-heading mb-5">
+        <h2 class="featured-line left-line">Featured Work</h2>
+        <p class="featured-line right-line">
             Selected examples of advanced geospatial analysis, mapping, and visualization projects
         </p>
+    </div>
+
 
         <!-- Gallery Grid -->
         <div class="row g-4">
@@ -888,6 +928,10 @@
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
 
+
+
+    
+
     // ────────────────────────────────────────────────
     // NEW: Dynamic modal content for featured projects
 document.addEventListener('DOMContentLoaded', function () {
@@ -910,6 +954,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
     // ────────────────────────────────────────────────
+    const featuredHeading = document.querySelector('.featured-heading');
+
+    if (featuredHeading) {
+        const headingObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const lines = featuredHeading.querySelectorAll('.featured-line');
+                    lines.forEach((line, index) => {
+                        setTimeout(() => {
+                            line.classList.add('animate');
+                        }, index * 300);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        headingObserver.observe(featuredHeading);
+    }
+
 </script>
 
 <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
@@ -933,6 +996,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
