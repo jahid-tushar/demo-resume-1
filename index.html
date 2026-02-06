@@ -350,6 +350,92 @@
             line-height: 1.4;
             padding: 0 10px;
         }
+
+
+
+
+
+                /* Honeycomb / Hexagonal Gallery */
+        .honeycomb-gallery {
+            --s: 220px;     /* hexagon size – adjust this to make hexes bigger/smaller */
+            --g: 12px;      /* gap between hexes */
+            --r: calc(var(--s) * 0.866); /* ≈ sqrt(3)/2 */
+        
+            display: grid;
+            grid-template-columns: repeat(4, var(--s));
+            grid-auto-rows: calc(var(--r) * 1.5);
+            gap: var(--g);
+            margin: calc(var(--s) * 0.6) auto;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+        
+        .hex {
+            width: var(--s);
+            height: calc(var(--s) * 1.1547); /* 2 / sqrt(3) */
+            margin: calc(var(--r) * -0.5) 0;
+            background: #eee;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .hex.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hex img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+        
+        .hex:hover {
+            transform: translateY(-12px) scale(1.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            z-index: 2;
+        }
+        
+        .hex:hover img {
+            transform: scale(1.12);
+        }
+        
+        /* Filler for balancing pattern */
+        .filler {
+            visibility: hidden;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .honeycomb-gallery {
+                grid-template-columns: repeat(3, var(--s));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .honeycomb-gallery {
+                --s: 190px;
+                grid-template-columns: repeat(3, var(--s));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .honeycomb-gallery {
+                --s: 160px;
+                grid-template-columns: repeat(2, var(--s));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .honeycomb-gallery {
+                --s: 140px;
+                grid-template-columns: repeat(2, var(--s));
+            }
+        }
         
     </style>
 </head>
@@ -1299,6 +1385,19 @@ document.addEventListener('DOMContentLoaded', function () {
         headingObserver.observe(featuredHeading);
     }
 
+
+        // Honeycomb fade-in animation
+    const hexes = document.querySelectorAll('.hex');
+    const hexObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+    
+    hexes.forEach(hex => hexObserver.observe(hex));
+
 </script>
 
 <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
@@ -1322,6 +1421,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
