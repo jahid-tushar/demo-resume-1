@@ -307,7 +307,49 @@
         }
 
 
-
+        /* Horizontal Video Carousel */
+        .video-carousel-wrapper {
+            position: relative;
+        }
+        
+        .video-carousel {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+            scrollbar-width: thin; /* Firefox */
+        }
+        
+        .video-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .video-carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .video-carousel::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .video-card h5 {
+            font-size: 1.05rem;
+            line-height: 1.4;
+            padding: 0 10px;
+        }
         
     </style>
 </head>
@@ -1138,6 +1180,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
