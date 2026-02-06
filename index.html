@@ -354,88 +354,52 @@
 
 
 
-
-                /* Honeycomb / Hexagonal Gallery */
-        .honeycomb-gallery {
-            --s: 220px;     /* hexagon size – adjust this to make hexes bigger/smaller */
-            --g: 12px;      /* gap between hexes */
-            --r: calc(var(--s) * 0.866); /* ≈ sqrt(3)/2 */
-        
-            display: grid;
-            grid-template-columns: repeat(4, var(--s));
-            grid-auto-rows: calc(var(--r) * 1.5);
-            gap: var(--g);
-            margin: calc(var(--s) * 0.6) auto;
-            justify-content: center;
-            padding: 0 1rem;
+        .gallery-wrapper {
+            position: relative;
         }
         
-        .hex {
-            width: var(--s);
-            height: calc(var(--s) * 1.1547); /* 2 / sqrt(3) */
-            margin: calc(var(--r) * -0.5) 0;
-            background: #eee;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            overflow: hidden;
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(40px);
+        .gallery-scroll {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
         }
         
-        .hex.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .gallery-scroll::-webkit-scrollbar {
+            height: 8px;
         }
         
-        .hex img {
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .gallery-item {
+            width: 280px;
+            cursor: pointer;
+        }
+        
+        .gallery-img {
             width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
-            transition: all 0.4s ease;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+            transition: all 0.35s ease;
         }
         
-        .hex:hover {
-            transform: translateY(-12px) scale(1.08);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-            z-index: 2;
+        .gallery-img:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.22);
         }
+
+
+
         
-        .hex:hover img {
-            transform: scale(1.12);
-        }
-        
-        /* Filler for balancing pattern */
-        .filler {
-            visibility: hidden;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 1200px) {
-            .honeycomb-gallery {
-                grid-template-columns: repeat(3, var(--s));
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .honeycomb-gallery {
-                --s: 190px;
-                grid-template-columns: repeat(3, var(--s));
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .honeycomb-gallery {
-                --s: 160px;
-                grid-template-columns: repeat(2, var(--s));
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .honeycomb-gallery {
-                --s: 140px;
-                grid-template-columns: repeat(2, var(--s));
-            }
-        }
         
     </style>
 </head>
@@ -1008,73 +972,201 @@
 
 
 
-    <!-- Field Work Experience - National Rabies Control Program -->
+
+
+<!-- Field Work Experience - National Rabies Control Program -->
 <section id="fieldwork" class="section bg-white">
     <div class="container">
         <h2 class="section-title text-center">Field Work & Training – National Rabies Control Program</h2>
         <p class="text-center lead mb-5">
-            Delivered hands-on GIS/RS and data collection training across multiple upazilas in Bangladesh, strengthening rabies surveillance and field data quality.
+            Delivered hands-on GIS/RS and mobile data collection training to field staff across multiple upazilas in Bangladesh. 
+            These sessions significantly improved data accuracy and strengthened rabies surveillance under the national health program.
         </p>
 
-        <!-- Honeycomb Gallery -->
-        <div class="honeycomb-gallery">
-            <!-- Images 1 to 14 -->
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (1).jpg" alt="Rabies Control Program training session">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (2).jpg" alt="Field training participants">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (3).jpg" alt="GIS training in upazila">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (4).jpg" alt="Data collection training">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (5).jpg" alt="Group session Bangladesh">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (6).jpg" alt="Rabies program field work">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (7).jpg" alt="Training across upazilas">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (8).jpg" alt="Mobile data collection demo">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (9).jpg" alt="Rabies awareness training">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (10).jpg" alt="Field team Bangladesh">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (11).jpg" alt="Upazila-level GIS workshop">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (12).jpg" alt="Rabies control program activity">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (13).jpg" alt="Training participants group">
-            </div>
-            <div class="hex">
-                <img src="National Rabies Control Program/National Rabies Control Program (14).jpg" alt="National Rabies Control field session">
-            </div>
+        <!-- Horizontal scrollable gallery - YouTube style -->
+        <div class="gallery-wrapper mt-4">
+            <div class="gallery-scroll d-flex flex-nowrap overflow-auto pb-4 gap-3">
 
-            <!-- Optional: invisible fillers to balance honeycomb shape -->
-            <div class="hex filler"></div>
-            <div class="hex filler"></div>
+                <!-- Image 1 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (1).jpg"
+                     data-caption="Training session on mobile data collection tools">
+                    <img src="National Rabies Control Program/National Rabies Control Program (1).jpg"
+                         alt="Rabies Control Program training session in upazila"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 2 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (2).jpg"
+                     data-caption="Participants actively learning GIS data entry">
+                    <img src="National Rabies Control Program/National Rabies Control Program (2).jpg"
+                         alt="Field training participants group photo"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 3 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (3).jpg"
+                     data-caption="GIS and remote sensing training for field officers">
+                    <img src="National Rabies Control Program/National Rabies Control Program (3).jpg"
+                         alt="GIS training session in progress"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 4 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (4).jpg"
+                     data-caption="Hands-on practice with Kobo Collect forms">
+                    <img src="National Rabies Control Program/National Rabies Control Program (4).jpg"
+                         alt="Data collection training demonstration"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 5 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (5).jpg"
+                     data-caption="Group discussion during rabies surveillance workshop">
+                    <img src="National Rabies Control Program/National Rabies Control Program (5).jpg"
+                         alt="Group session in rural upazila"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 6 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (6).jpg"
+                     data-caption="Field team training on geolocation tagging">
+                    <img src="National Rabies Control Program/National Rabies Control Program (6).jpg"
+                         alt="Rabies program field work training"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 7 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (7).jpg"
+                     data-caption="Training conducted in multiple upazilas">
+                    <img src="National Rabies Control Program/National Rabies Control Program (7).jpg"
+                         alt="Training across different upazilas"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 8 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (8).jpg"
+                     data-caption="Demonstration of real-time data submission">
+                    <img src="National Rabies Control Program/National Rabies Control Program (8).jpg"
+                         alt="Mobile data collection demo"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 9 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (9).jpg"
+                     data-caption="Rabies awareness and data accuracy session">
+                    <img src="National Rabies Control Program/National Rabies Control Program (9).jpg"
+                         alt="Rabies awareness training activity"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 10 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (10).jpg"
+                     data-caption="Field officers receiving certificates">
+                    <img src="National Rabies Control Program/National Rabies Control Program (10).jpg"
+                         alt="Field team after training"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 11 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (11).jpg"
+                     data-caption="Upazila-level GIS and mapping workshop">
+                    <img src="National Rabies Control Program/National Rabies Control Program (11).jpg"
+                         alt="Upazila GIS workshop"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 12 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (12).jpg"
+                     data-caption="Practical session on rabies case reporting">
+                    <img src="National Rabies Control Program/National Rabies Control Program (12).jpg"
+                         alt="Rabies control program activity"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 13 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (13).jpg"
+                     data-caption="Participants engaged in group training">
+                    <img src="National Rabies Control Program/National Rabies Control Program (13).jpg"
+                         alt="Training participants group photo"
+                         class="gallery-img">
+                </div>
+
+                <!-- Image 14 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#imageModal"
+                     data-img-src="National Rabies Control Program/National Rabies Control Program (14).jpg"
+                     data-caption="Field training closing session">
+                    <img src="National Rabies Control Program/National Rabies Control Program (14).jpg"
+                         alt="National Rabies Control field session"
+                         class="gallery-img">
+                </div>
+
+            </div>
         </div>
 
         <p class="text-center mt-5 text-muted fst-italic">
-            Photos from various training sessions and field activities conducted under the National Rabies Control Program across Bangladesh.
+            Scroll left or right to view photos from various training sessions conducted under the National Rabies Control Program across Bangladesh.
         </p>
     </div>
 </section>
 
-
-
+<!-- Image Modal (lightbox popup) -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content bg-dark border-0">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title text-white" id="imageModalLabel">Training Photo</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-3">
+                <img id="modalImage" src="" alt="Enlarged training photo" class="img-fluid rounded" style="max-height: 82vh;">
+            </div>
+            <div class="modal-footer border-0 pt-0 justify-content-center">
+                <small id="modalCaption" class="text-white-75"></small>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -1386,17 +1478,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-        // Honeycomb fade-in animation
-    const hexes = document.querySelectorAll('.hex');
-    const hexObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+
+
+// Gallery modal - fill image and caption when opening
+document.addEventListener('DOMContentLoaded', function () {
+    const imageModal = document.getElementById('imageModal');
+    if (imageModal) {
+        imageModal.addEventListener('show.bs.modal', function (event) {
+            const trigger = event.relatedTarget;
+            const src = trigger.getAttribute('data-img-src');
+            const caption = trigger.getAttribute('data-caption');
+
+            document.getElementById('modalImage').src = src;
+            document.getElementById('modalCaption').textContent = caption || '';
+            document.getElementById('imageModalLabel').textContent = caption || 'Field Training Photo';
         });
-    }, { threshold: 0.15 });
+    }
+});
+
+
+
     
-    hexes.forEach(hex => hexObserver.observe(hex));
 
 </script>
 
@@ -1421,8 +1523,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
-
-
 
 
 
