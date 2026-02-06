@@ -977,36 +977,64 @@
     </div>
 </section>
 
-<!-- Story Maps -->
+<!-- Interactive Story Maps -->
 <section id="storymaps" class="section bg-light">
     <div class="container">
-        <h2 class="section-title text-center">Interactive Story Maps</h2>
-        <p class="text-center lead mb-5">Explore geospatial stories, spatial narratives, and interactive maps</p>
-        
-        <div class="row g-4 justify-content-center">
-            
-            <!-- StoryMap 1 -->
-            <div class="col-lg-10">
-                <div class="shadow rounded overflow-hidden">
-                    <iframe src="https://www.google.com/maps/d/u/0/edit?mid=1UBEDo2ro5962kqDBcA-Gt04QEoyqMHQ&usp=sharing" 
-                            width="100%" 
-                            height="600" 
-                            frameborder="0" 
-                            allowfullscreen 
-                            allow="geolocation"></iframe>
+        <h2 class="section-title text-center">Interactive Story Maps & Dashboards</h2>
+        <p class="text-center lead mb-5">Explore geospatial narratives, urban analysis, environmental stories, and interactive maps</p>
+
+        <!-- Horizontal scrollable maps carousel -->
+        <div class="video-carousel-wrapper mt-4">  <!-- reusing same wrapper class as videos -->
+            <div class="video-carousel d-flex flex-nowrap overflow-auto pb-4 gap-4">
+
+                <!-- StoryMap / My Map 1 -->
+                <div class="video-card flex-shrink-0" style="width: 500px;">  <!-- wider for maps -->
+                    <div class="ratio ratio-4x3 rounded shadow mb-3">  <!-- 4:3 works better for maps -->
+                        <iframe 
+                            src="https://www.google.com/maps/d/embed?mid=1UBEDo2ro5962kqDBcA-Gt04QEoyqMHQ"
+                            title="Your Map Title"
+                            frameborder="0"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Urban Growth & Land Use Change in Dhaka</h5>
                 </div>
-                <h5 class="mt-3 text-center">Story Map Title – e.g. Urban Growth in Dhaka</h5>
+
+                <!-- Add more maps here (duplicate the block above) -->
+                <!-- Example placeholder for ArcGIS StoryMap -->
+                <!--
+                <div class="video-card flex-shrink-0" style="width: 500px;">
+                    <div class="ratio ratio-4x3 rounded shadow mb-3">
+                        <iframe 
+                            src="https://storymaps.arcgis.com/stories/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                            title="ArcGIS StoryMap Example"
+                            frameborder="0"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Flood Risk Mapping – Bangladesh Rivers</h5>
+                </div>
+                -->
+
+                <!-- Example for other dashboards (Tableau, Power BI, etc.) -->
+                <!--
+                <div class="video-card flex-shrink-0" style="width: 500px;">
+                    <div class="ratio ratio-4x3 rounded shadow mb-3">
+                        <iframe 
+                            src="https://public.tableau.com/views/YourDashboard/YourView?:embed=y&:display_count=no"
+                            title="Tableau Dashboard Example"
+                            frameborder="0"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Population Density & Health Facilities Dashboard</h5>
+                </div>
+                -->
+
             </div>
-            
-            <!-- StoryMap 2 (add more if you have) -->
-            <!-- Duplicate the div above and change src + title -->
-
-        </div>
-
-        <div class="text-center mt-5">
-            <a href="https://storymaps.arcgis.com/" target="_blank" class="btn btn-outline-primary">
-                <i class="fas fa-map me-2"></i> View All StoryMaps
-            </a>
         </div>
     </div>
 </section>
@@ -1216,6 +1244,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
