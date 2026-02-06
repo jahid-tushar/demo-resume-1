@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <!-- Leaflet CSS for Interactive Maps -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <!-- Chart.js for Skill Radar Chart -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary: #006ba6;
@@ -178,7 +174,9 @@
             width: 30px;
             text-align: center;
         }
-       
+
+        
+
         /* Featured Work / Gallery styles - Consistent & Future-Proof Grid */
         .gallery-card {
             position: relative;
@@ -191,13 +189,15 @@
             flex-direction: column;
             height: 100%;
         }
+
         .gallery-card .gallery-img-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 75%; /* 4:3 aspect ratio – change to 56.25% for wider (16:9) */
+            padding-top: 75%;                   /* 4:3 aspect ratio – change to 56.25% for wider (16:9) */
             overflow: hidden;
             flex-shrink: 0;
         }
+
         .gallery-card .gallery-img {
             position: absolute;
             top: 0; left: 0;
@@ -206,9 +206,11 @@
             object-fit: cover;
             transition: transform 0.6s ease;
         }
+
         .gallery-card:hover .gallery-img {
             transform: scale(1.08);
         }
+
         .gallery-overlay {
             position: absolute;
             bottom: 0;
@@ -220,6 +222,7 @@
             transition: all 0.4s ease;
             min-height: 110px;
         }
+
         .gallery-title {
             font-size: 1.24rem;
             font-weight: 700;
@@ -231,13 +234,16 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         /* Make grid items stretch cards to equal height */
         .row.g-4 > div {
             display: flex;
         }
+
         .row.g-4 > div .gallery-card {
             flex: 1;
         }
+
         @media (max-width: 991px) {
             .hero { padding: 160px 0 120px; }
             .profile-img { width: 170px; height: 170px; }
@@ -247,24 +253,27 @@
             .profile-img { width: 150px; height: 150px; }
             .section-title { font-size: 2.2rem; }
         }
+
+
+
                 /* Featured Work Animated Heading */
         .featured-heading {
             margin-bottom: 3rem;
         }
-       
+        
         .featured-line {
             font-family: 'Playfair Display', serif;
             opacity: 0;
             transform: translateX(80px);
             transition: all 1s ease;
         }
-       
+        
         .left-line {
             text-align: left;
             font-size: 2.8rem;
             transform: translateX(-100px);
         }
-       
+        
         .right-line {
             text-align: right;
             font-size: 1.2rem;
@@ -272,104 +281,18 @@
             margin-left: auto;
             color: var(--gray);
         }
-       
+        
         .featured-line.animate {
             opacity: 1;
             transform: translateX(0);
         }
-       
-        /* Progress Bar for Skills */
-        .progress {
-            height: 8px;
-            margin-bottom: 1rem;
-        }
-        .progress-bar {
-            background: var(--accent);
-        }
-       
-        /* Radar Chart Container */
-        #skillsRadarChart {
-            max-width: 400px;
-            margin: 2rem auto;
-        }
-       
-        /* Stats Cards */
-        .stat-card {
-            text-align: center;
-            padding: 1.5rem;
-            border-radius: 10px;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .stat-text {
-            font-size: 1rem;
-            color: var(--gray);
-        }
-       
-        /* Interactive Map Section */
-        #interactive-maps .map-container {
-            height: 400px;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-       
-        /* Enhanced Modal Styles */
-        .modal-project-details {
-            text-align: left;
-        }
-        .modal-project-details h5 {
-            margin-top: 1.5rem;
-            color: var(--primary-dark);
-        }
-        .tool-badge {
-            background: var(--light);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-        }
-       
-        /* Dark Mode */
-        body.dark-mode {
-            --bg: #1a202c;
-            --text: #e2e8f0;
-            --light: #2d3748;
-            --dark: #f7fafc;
-        }
-        body.dark-mode .card {
-            background: var(--light);
-        }
-        body.dark-mode .section-title {
-            color: var(--dark);
-        }
-        #dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-        }
+
+
+
+        
     </style>
 </head>
 <body>
-<!-- Dark Mode Toggle -->
-<button id="dark-mode-toggle"><i class="fas fa-moon"></i></button>
-
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
@@ -380,8 +303,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
-                <li class="nav-item"><a class="nav-link" href="#interactive">Interactive Maps</a></li>
                 <li class="nav-item"><a class="nav-link" href="#featured">Featured Work</a></li>
                 <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                 <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
@@ -389,16 +310,16 @@
                 <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
                 <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
                 <li class="nav-item"><a class="nav-link" href="#trainings">Trainings</a></li>
-                <li class="nav-item"><a class="nav-link" href="#education-content">GIS Education</a></li>
                 <li class="nav-item"><a class="nav-link" href="#references">References</a></li>
             </ul>
         </div>
     </div>
 </nav>
+
 <!-- Hero -->
 <section class="hero text-center">
     <div class="container">
-        <img src="images/profile.jpg" alt="Mohammad Jahidul Islam Tushar - GIS Specialist Portrait" class="rounded-circle profile-img mb-4" loading="lazy">
+        <img src="images/profile.jpg" alt="Mohammad Jahidul Islam Tushar" class="rounded-circle profile-img mb-4">
         <h1 class="display-4 fw-bold mb-2">Mohammad Jahidul Islam Tushar</h1>
         <h3 class="fw-light mb-4">Deputy GIS Specialist</h3>
         <p class="lead mb-4">
@@ -415,6 +336,7 @@
         </a>
     </div>
 </section>
+
 <!-- Professional Summary -->
 <section id="about" class="section bg-white">
     <div class="container">
@@ -428,82 +350,7 @@
         </div>
     </div>
 </section>
-<!-- Key Achievements & Impact -->
-<section id="achievements" class="section bg-light">
-    <div class="container">
-        <h2 class="section-title text-center">Key Achievements & Impact</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-number">2000+</div>
-                    <div class="stat-text">Map Sheets QA/QC with <5% Error Rate</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-number">150+</div>
-                    <div class="stat-text">Field Staff Trained, 30% Data Accuracy Improvement</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-number">30-40%</div>
-                    <div class="stat-text">Efficiency Gain via Python Automation</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-number">180+</div>
-                    <div class="stat-text">Countries Reached through GIS Training</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-text">Peer-Reviewed Publications & Conference Papers</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-number">700+</div>
-                    <div class="stat-text">Real-Time Field Reports Managed for Health Programs</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Interactive Maps & Dashboards -->
-<section id="interactive" class="section">
-    <div class="container">
-        <h2 class="section-title text-center">Interactive Maps & Live Demos</h2>
-        <p class="text-center lead mb-5">Explore dynamic geospatial visualizations demonstrating real-world applications in urban planning, environmental monitoring, and public health.</p>
-        <div class="row g-4">
-            <!-- Dhaka LULC Change Map -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">Dhaka LULC Change Detection (1972–2019)</div>
-                    <div class="card-body">
-                        <div id="map-lulc" class="map-container"></div>
-                        <p class="mt-3">Interactive time slider for land use transitions in Dhaka Metropolitan City using Landsat imagery.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- COVID-19 Hotspots -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">COVID-19 Hotspots in Dhaka</div>
-                    <div class="card-body">
-                        <div id="map-covid" class="map-container"></div>
-                        <p class="mt-3">Kernel density heat map with pop-ups for case distribution and vulnerable populations.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-4">
-            <p>For more interactive demos, visit my <a href="https://arcgis.com/username" target="_blank">ArcGIS Online Profile</a> or explore StoryMaps.</p>
-        </div>
-    </div>
-</section>
+
 <!-- Featured Work -->
 <section id="featured" class="section bg-light">
     <div class="container">
@@ -513,195 +360,162 @@
             Selected examples of advanced geospatial analysis, mapping, and visualization projects
         </p>
     </div>
+
+
         <!-- Gallery Grid -->
         <div class="row g-4">
-           
+            
             <!-- Project 1 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Advanced Analysis.jpg"
                      data-title="Advanced Spatial Analysis & Modeling"
-                     data-desc="Multi-source data integration, change detection, LULC classification, and geospatial modeling using satellite imagery and UAV-derived products."
-                     data-tools="ArcGIS Pro, ERDAS Imagine, Python"
-                     data-methodology="Integrated Landsat & Sentinel-2 data; Supervised classification with Random Forest; Accuracy assessment via confusion matrix (92% OA)."
-                     data-impact="Informed urban planning policies; Reduced analysis time by 40% through automation."
-                     data-links='{"report": "path/to/report1.pdf", "map": "https://arcgis.com/map1"}'>
+                     data-desc="Multi-source data integration, change detection, LULC classification, and geospatial modeling using satellite imagery and UAV-derived products.">
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Advanced Analysis.jpg"
-                             alt="Advanced Spatial Analysis and Modeling collage showing satellite imagery integration"
-                             class="gallery-img" loading="lazy">
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Advanced Spatial Analysis & Modeling</div>
                     </div>
                 </div>
             </div>
+
             <!-- Project 2 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Study Area Mapping with advance analysis and INTERACTIVE Diagram.jpg"
                      data-title="Geospatial Analysis of Bangladesh: Environment, Health & Urban Insights"
-                     data-desc="An advanced GIS portfolio on Bangladesh and Dhaka, covering land cover change, COVID-19 hotspot analysis, flood risk modeling, and historical mapping. It highlights expertise in spatial analysis, geostatistics, and integrated GIS workflows for environmental and urban planning."
-                     data-tools="QGIS, ArcGIS, Tableau"
-                     data-methodology="Multi-temporal analysis with NDVI/NDWI; Geostatistical interpolation (Kriging); Overlay analysis for risk zoning."
-                     data-impact="Supported national health initiatives; Identified high-risk flood zones affecting 2M+ residents."
-                     data-links='{"report": "path/to/report2.pdf", "map": "https://arcgis.com/map2"}'>
+                     data-desc="An advanced GIS portfolio on Bangladesh and Dhaka, covering land cover change, COVID-19 hotspot analysis, flood risk modeling, and historical mapping. It highlights expertise in spatial analysis, geostatistics, and integrated GIS workflows for environmental and urban planning.">
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Study Area Mapping with advance analysis and INTERACTIVE Diagram.jpg"
-                             alt="Geospatial analysis collage of Bangladesh with environmental and urban layers"
-                             class="gallery-img" loading="lazy">
+                             alt="Study Area Mapping with advance analysis and INTERACTIVE Diagram"
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Geospatial Analysis of Bangladesh: Environment, Health & Urban Insights</div>
                     </div>
                 </div>
             </div>
+
             <!-- Project 3 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Image Classification.jpg"
                      data-title="Urban Evolution Unveiled: Multi-Decade Land Use & Land Cover Transformation in Dhaka Metropolitan City (1972–2019)"
-                     data-desc="A comprehensive supervised classification and change detection analysis using Landsat imagery, illustrating dramatic shifts from vegetation and barren land to rapid settlement expansion in Dhaka City Corporation (DCC) areas, highlighting urbanization trends and environmental impacts over nearly five decades."
-                     data-tools="ArcGIS, ENVI, Google Earth Engine"
-                     data-methodology="Post-classification change detection; Pixel-based classification; Post-processing with majority filter."
-                     data-impact="Quantified 300% increase in built-up area; Informed sustainable urban development strategies."
-                     data-links='{"report": "path/to/report3.pdf", "map": "https://arcgis.com/map3"}'>
+                     data-desc="A comprehensive supervised classification and change detection analysis using Landsat imagery, illustrating dramatic shifts from vegetation and barren land to rapid settlement expansion in Dhaka City Corporation (DCC) areas, highlighting urbanization trends and environmental impacts over nearly five decades.">
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Image Classification.jpg"
-                             alt="LULC classification map showing urban expansion in Dhaka from 1972 to 2019"
-                             class="gallery-img" loading="lazy">
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Urban Evolution Unveiled: Multi-Decade Land Use & Land Cover Transformation in Dhaka Metropolitan City (1972–2019)</div>
                     </div>
                 </div>
             </div>
+
             <!-- Project 4 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Digitizng.jpg"
                      data-title="Precision Cartography in Action: Georeferencing, Digitization, and Advanced Map Composition Using ArcMap"
-                     data-desc="Step-by-step demonstration of professional GIS workflows, including georeferencing raster images, digitizing administrative boundaries (e.g., Upazila maps), creating layered layouts with legends, scale bars, and north arrows, and visualizing complex features like Sundarban compartments and range offices."
-                     data-tools="ArcMap, Adobe Illustrator"
-                     data-methodology="Control point georeferencing (RMS <5m); Vector digitization with topology rules; Layout design with cartographic standards."
-                     data-impact="Produced 500+ publication-quality maps; Enhanced data accessibility for stakeholders."
-                     data-links='{"report": "path/to/report4.pdf", "map": "https://arcgis.com/map4"}'>
+                     data-desc="Step-by-step demonstration of professional GIS workflows, including georeferencing raster images, digitizing administrative boundaries (e.g., Upazila maps), creating layered layouts with legends, scale bars, and north arrows, and visualizing complex features like Sundarban compartments and range offices.">
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Digitizng.jpg"
-                             alt="Digitization process showing georeferenced maps of Sundarban and administrative boundaries"
-                             class="gallery-img" loading="lazy">
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Precision Cartography in Action: Georeferencing, Digitization, and Advanced Map Composition Using ArcMap</div>
                     </div>
                 </div>
             </div>
+
             <!-- Project 5 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Attractive Map 2.jpg"
                      data-title="From Global Perspectives to Local Insights: Satellite-Derived Maps and Multi-Scale Geospatial Visualizations"
-                     data-desc="Stunning integration of night-time lights, high-resolution satellite imagery, and thematic overlays depicting urban extents, river networks, and regional connectivity across Bangladesh, South Asia, and comparative global/Dhaka city views."
-                     data-tools="Google Earth Pro, ArcGIS Pro"
-                     data-methodology="Multi-scale mapping; VIIRS night lights integration; Symbology with graduated colors and hillshade."
-                     data-impact="Visualized economic disparities; Used in regional planning workshops."
-                     data-links='{"report": "path/to/report5.pdf", "map": "https://arcgis.com/map5"}'>
+                     data-desc="Stunning integration of night-time lights, high-resolution satellite imagery, and thematic overlays depicting urban extents, river networks, and regional connectivity across Bangladesh, South Asia, and comparative global/Dhaka city views.">
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Attractive Map 2.jpg"
-                             alt="Multi-scale satellite maps comparing global, regional, and local views of Bangladesh"
-                             class="gallery-img" loading="lazy">
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">From Global Perspectives to Local Insights: Satellite-Derived Maps and Multi-Scale Geospatial Visualizations</div>
                     </div>
                 </div>
             </div>
+
             <!-- Project 6 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Collecting Geolocatoions SOP.jpg"
                      data-title="Seamless Geospatial Data Processing: Geocoding, Coordinate Conversion, and 3D Terrain Exploration in Google Earth Pro"
-                     data-desc="Advanced techniques for handling large datasets in Excel (find/replace, decimal degree formatting), importing coordinates into Google Earth Pro, configuring 3D views, terrain exaggeration, and historical imagery comparison for precise location-based analysis and visualization."
-                     data-tools="Google Earth Pro, Excel"
-                     data-methodology="Batch geocoding; Projection conversion (WGS84 to UTM); KML export with time animation."
-                     data-impact="Processed 10,000+ points; Enhanced field survey efficiency."
-                     data-links='{"report": "path/to/report6.pdf", "map": "https://arcgis.com/map6"}'>
+                     data-desc="Advanced techniques for handling large datasets in Excel (find/replace, decimal degree formatting), importing coordinates into Google Earth Pro, configuring 3D views, terrain exaggeration, and historical imagery comparison for precise location-based analysis and visualization.">
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Collecting Geolocatoions SOP.jpg"
-                             alt="Geocoding workflow with coordinate conversion and 3D terrain in Google Earth"
-                             class="gallery-img" loading="lazy">
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Seamless Geospatial Data Processing: Geocoding, Coordinate Conversion, and 3D Terrain Exploration in Google Earth Pro</div>
                     </div>
                 </div>
             </div>
+
             <!-- Project 7 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Attractive Map.jpg"
                      data-title="Demographic & Health Insights Through GIS: 60+ Population Density and COVID-19 Case Distribution in Dhaka & Bangladesh"
-                     data-desc="Kernel density heat maps and point-based visualizations revealing vulnerable elderly populations (60+ age group) and confirmed COVID-19 cases across administrative units in Dhaka Metropolitan City (DMC) and nationwide, using HDX and social media-sourced data for public health decision support."
-                     data-tools="ArcGIS, Tableau"
-                     data-methodology="Point density analysis; Heatmap rendering; Join with census data for normalization."
-                     data-impact="Guided vaccination campaigns; Highlighted 500K+ vulnerable seniors."
-                     data-links='{"report": "path/to/report7.pdf", "map": "https://arcgis.com/map7"}'>
+                     data-desc="Kernel density heat maps and point-based visualizations revealing vulnerable elderly populations (60+ age group) and confirmed COVID-19 cases across administrative units in Dhaka Metropolitan City (DMC) and nationwide, using HDX and social media-sourced data for public health decision support.">
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Attractive Map.jpg"
-                             alt="Heat maps of population density and COVID-19 cases in Dhaka and Bangladesh"
-                             class="gallery-img" loading="lazy">
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Demographic & Health Insights Through GIS: 60+ Population Density and COVID-19 Case Distribution in Dhaka & Bangladesh</div>
                     </div>
                 </div>
             </div>
+
             <!-- Project 8 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Logo Poster Banner.jpg"
                      data-title="Building Geospatial Excellence: Designing Live Training, ArcGIS Mastery Courses & Global Learner Impact Posters"
-                     data-desc="Collage of instructor-led live sessions, course highlights (ArcMap, ArcGIS Pro, Python/ArcPy, Web GIS), certification offers, international awards, and student testimonials, showcasing journey in delivering high-quality, accessible GIS education to learners in 180+ countries."
-                     data-tools="Adobe Photoshop, ArcGIS"
-                     data-methodology="Graphic design for educational materials; Infographic creation with data visualization."
-                     data-impact="Increased enrollment by 50%; Positive feedback from 1000+ learners."
-                     data-links='{"report": "path/to/report8.pdf", "map": "https://arcgis.com/map8"}'>
+                     data-desc="Collage of instructor-led live sessions, course highlights (ArcMap, ArcGIS Pro, Python/ArcPy, Web GIS), certification offers, international awards, and student testimonials, showcasing journey in delivering high-quality, accessible GIS education to learners in 180+ countries.">
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Logo Poster Banner.jpg"
-                             alt="Posters and banners for GIS training courses and global impact"
-                             class="gallery-img" loading="lazy">
+                             alt="Advanced Geospatial Analysis"
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Building Geospatial Excellence: Designing Live Training, ArcGIS Mastery Courses & Global Learner Impact Posters</div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
+
 <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
-                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="text-center">
-                    <img id="modalImage" src="" alt="Project Image" class="img-fluid mb-4" style="max-height: 50vh; object-fit: contain;" loading="lazy">
-                </div>
-                <div class="modal-project-details">
-                    <h4 id="modalTitle" class="mb-3"></h4>
-                    <p id="modalDesc" class="lead text-muted mb-4"></p>
-                    <h5>Tools & Technologies</h5>
-                    <div id="modalTools"></div>
-                    <h5>Methodology</h5>
-                    <p id="modalMethodology"></p>
-                    <h5>Impact & Results</h5>
-                    <p id="modalImpact"></p>
-                    <h5>Resources</h5>
-                    <div id="modalLinks"></div>
-                </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="Project Image" class="img-fluid mb-4" style="max-height: 70vh; object-fit: contain;">
+                <h4 id="modalTitle" class="mb-3"></h4>
+                <p id="modalDesc" class="lead text-muted"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -709,6 +523,7 @@
         </div>
     </div>
 </div>
+
 <!-- Core Competencies -->
 <section id="skills" class="section bg-light">
     <div class="container">
@@ -720,13 +535,7 @@
                         <i class="fas fa-map skill-icon"></i> GIS & Remote Sensing
                     </div>
                     <div class="card-body">
-                        ArcGIS, ArcGIS Pro, QGIS, ERDAS Imagine, ENVI, IDRISI Selva, Google Earth Pro<br>
-                        <div class="mt-3">
-                            <div class="d-flex justify-content-between"><span>ArcGIS Pro</span><span>Expert</span></div>
-                            <div class="progress"><div class="progress-bar" style="width: 95%"></div></div>
-                            <div class="d-flex justify-content-between"><span>QGIS</span><span>Expert</span></div>
-                            <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
-                        </div>
+                        ArcGIS, ArcGIS Pro, QGIS, ERDAS Imagine, ENVI, IDRISI Selva, Google Earth Pro
                     </div>
                 </div>
             </div>
@@ -736,11 +545,7 @@
                         <i class="fas fa-drone skill-icon"></i> UAV & Photogrammetry
                     </div>
                     <div class="card-body">
-                        Pix4D, Agisoft Metashape, Orthophoto generation, Point cloud processing, DEM/DSM creation<br>
-                        <div class="mt-3">
-                            <div class="d-flex justify-content-between"><span>Pix4D</span><span>Advanced</span></div>
-                            <div class="progress"><div class="progress-bar" style="width: 80%"></div></div>
-                        </div>
+                        Pix4D, Agisoft Metashape, Orthophoto generation, Point cloud processing, DEM/DSM creation
                     </div>
                 </div>
             </div>
@@ -750,11 +555,7 @@
                         <i class="fas fa-chart-area skill-icon"></i> Spatial Analysis & Modeling
                     </div>
                     <div class="card-body">
-                        Cartographic design, Geospatial modeling, LULC classification, Change detection, Spatial & non-spatial analysis<br>
-                        <div class="mt-3">
-                            <div class="d-flex justify-content-between"><span>LULC Classification</span><span>Expert</span></div>
-                            <div class="progress"><div class="progress-bar" style="width: 95%"></div></div>
-                        </div>
+                        Cartographic design, Geospatial modeling, LULC classification, Change detection, Spatial & non-spatial analysis
                     </div>
                 </div>
             </div>
@@ -764,11 +565,7 @@
                         <i class="fas fa-code skill-icon"></i> Automation & Programming
                     </div>
                     <div class="card-body">
-                        Basic Python, Script Adaptation & Automation (AI-assisted), Batch Processing<br>
-                        <div class="mt-3">
-                            <div class="d-flex justify-content-between"><span>Python/ArcPy</span><span>Intermediate</span></div>
-                            <div class="progress"><div class="progress-bar" style="width: 70%"></div></div>
-                        </div>
+                        Basic Python, Script Adaptation & Automation (AI-assisted), Batch Processing
                     </div>
                 </div>
             </div>
@@ -778,11 +575,7 @@
                         <i class="fas fa-database skill-icon"></i> Data Management
                     </div>
                     <div class="card-body">
-                        Spatial databases, Data quality control (QA/QC), Data analytics, Multi-source data integration<br>
-                        <div class="mt-3">
-                            <div class="d-flex justify-content-between"><span>QA/QC Processes</span><span>Expert</span></div>
-                            <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
-                        </div>
+                        Spatial databases, Data quality control (QA/QC), Data analytics, Multi-source data integration
                     </div>
                 </div>
             </div>
@@ -792,20 +585,14 @@
                         <i class="fas fa-chart-pie skill-icon"></i> Visualization & Reporting
                     </div>
                     <div class="card-body">
-                        Tableau, SPSS, Adobe Illustrator, Adobe Photoshop, MS Office<br>
-                        <div class="mt-3">
-                            <div class="d-flex justify-content-between"><span>Tableau</span><span>Advanced</span></div>
-                            <div class="progress"><div class="progress-bar" style="width: 80%"></div></div>
-                        </div>
+                        Tableau, SPSS, Adobe Illustrator, Adobe Photoshop, MS Office
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-center">
-            <canvas id="skillsRadarChart"></canvas>
-        </div>
     </div>
 </section>
+
 <!-- Professional Experience -->
 <section id="experience" class="section">
     <div class="container">
@@ -948,6 +735,7 @@
         </div>
     </div>
 </section>
+
 <!-- Education -->
 <section id="education" class="section bg-light">
     <div class="container">
@@ -978,6 +766,7 @@
         </div>
     </div>
 </section>
+
 <!-- Publications -->
 <section id="publications" class="section">
     <div class="container">
@@ -1003,6 +792,7 @@
         </div>
     </div>
 </section>
+
 <!-- Professional Activities & Contributions -->
 <section id="activities" class="section bg-light">
     <div class="container">
@@ -1021,6 +811,7 @@
         </div>
     </div>
 </section>
+
 <!-- Trainings & Certifications -->
 <section id="trainings" class="section">
     <div class="container">
@@ -1071,37 +862,9 @@
         </div>
     </div>
 </section>
-<!-- GIS Education & Knowledge Sharing -->
-<section id="education-content" class="section bg-light">
-    <div class="container">
-        <h2 class="section-title text-center">GIS Education & Knowledge Sharing</h2>
-        <p class="text-center lead mb-4">As an instructor, I've delivered high-quality GIS training to learners in 180+ countries through live sessions, courses, and YouTube tutorials.</p>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">GEORC YouTube Channel</div>
-                    <div class="card-body">
-                        <p>Practical tutorials on GIS, Remote Sensing, ArcGIS, Python scripting, and more.</p>
-                        <a href="https://youtube.com/@georc" target="_blank" class="btn btn-primary">Visit Channel</a>
-                        <!-- Embed a video example -->
-                        <iframe class="mt-3" width="100%" height="200" src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="GIS Tutorial" frameborder="0" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">ArcGIS Mastery Courses</div>
-                    <div class="card-body">
-                        <p>Live online workshops covering ArcMap, ArcGIS Pro, Web GIS, and automation.</p>
-                        <p>Features: Certification, hands-on projects, student testimonials from global participants.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <!-- References -->
-<section id="references" class="section">
+<section id="references" class="section bg-light">
     <div class="container">
         <h2 class="section-title text-center">References</h2>
         <div class="row g-4 justify-content-center">
@@ -1135,6 +898,7 @@
         </div>
     </div>
 </section>
+
 <!-- Footer -->
 <footer class="text-center">
     <div class="container">
@@ -1142,51 +906,34 @@
         <div class="mb-4">
             <a href="https://www.linkedin.com/in/jahid-tushar1996" class="mx-4 fs-3"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:jahidhtushar448@gmail.com" class="mx-4 fs-3"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/yourusername" class="mx-4 fs-3"><i class="fab fa-github"></i></a>
         </div>
-        <!-- Contact Form -->
-        <form action="https://formspree.io/f/yourformid" method="POST" class="row g-3 justify-content-center">
-            <div class="col-md-4">
-                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-            </div>
-            <div class="col-md-4">
-                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-            </div>
-            <div class="col-12 col-md-8">
-                <textarea name="message" class="form-control" placeholder="Message" rows="3" required></textarea>
-            </div>
-            <div class="col-12 col-md-8 text-center">
-                <button type="submit" class="btn btn-download">Send Message</button>
-            </div>
-        </form>
     </div>
 </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 80);
-});
-// Section fade-in animation
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 80);
     });
-}, { threshold: 0.1 });
-sections.forEach(section => observer.observe(section));
 
-// Dark Mode Toggle
-const toggleBtn = document.getElementById('dark-mode-toggle');
-toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    toggleBtn.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-});
+    // Section fade-in animation
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
 
-// Dynamic modal content for featured projects
+
+
+    
+
+    // ────────────────────────────────────────────────
+    // NEW: Dynamic modal content for featured projects
 document.addEventListener('DOMContentLoaded', function () {
     const projectModal = document.getElementById('projectModal');
     if (projectModal) {
@@ -1195,120 +942,62 @@ document.addEventListener('DOMContentLoaded', function () {
             const imgSrc = card.getAttribute('data-img');
             const title = card.getAttribute('data-title');
             const desc = card.getAttribute('data-desc');
-            const tools = card.getAttribute('data-tools');
-            const methodology = card.getAttribute('data-methodology');
-            const impact = card.getAttribute('data-impact');
-            const linksStr = card.getAttribute('data-links');
-            const links = JSON.parse(linksStr || '{}');
-
+            
             const modalImg = projectModal.querySelector('#modalImage');
             const modalTitle = projectModal.querySelector('#modalTitle');
             const modalDesc = projectModal.querySelector('#modalDesc');
-            const modalTools = projectModal.querySelector('#modalTools');
-            const modalMethodology = projectModal.querySelector('#modalMethodology');
-            const modalImpact = projectModal.querySelector('#modalImpact');
-            const modalLinks = projectModal.querySelector('#modalLinks');
-
+            
             modalImg.src = imgSrc;
             modalTitle.textContent = title;
             modalDesc.textContent = desc;
-            modalMethodology.textContent = methodology;
-            modalImpact.textContent = impact;
-
-            // Tools badges
-            modalTools.innerHTML = '';
-            tools.split(', ').forEach(tool => {
-                const badge = document.createElement('span');
-                badge.classList.add('tool-badge');
-                badge.textContent = tool.trim();
-                modalTools.appendChild(badge);
-            });
-
-            // Links buttons
-            modalLinks.innerHTML = '';
-            if (links.report) {
-                const btnReport = document.createElement('a');
-                btnReport.href = links.report;
-                btnReport.classList.add('btn', 'btn-outline-primary', 'me-2');
-                btnReport.textContent = 'View Full Report';
-                btnReport.target = '_blank';
-                modalLinks.appendChild(btnReport);
-            }
-            if (links.map) {
-                const btnMap = document.createElement('a');
-                btnMap.href = links.map;
-                btnMap.classList.add('btn', 'btn-outline-success');
-                btnMap.textContent = 'Open Live Map';
-                btnMap.target = '_blank';
-                modalLinks.appendChild(btnMap);
-            }
         });
     }
 });
+    // ────────────────────────────────────────────────
+    const featuredHeading = document.querySelector('.featured-heading');
 
-// Featured Heading Animation
-const featuredHeading = document.querySelector('.featured-heading');
-if (featuredHeading) {
-    const headingObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const lines = featuredHeading.querySelectorAll('.featured-line');
-                lines.forEach((line, index) => {
-                    setTimeout(() => {
-                        line.classList.add('animate');
-                    }, index * 300);
-                });
-            }
-        });
-    }, { threshold: 0.3 });
-    headingObserver.observe(featureaturedHeading);
-}
-
-// Skills Radar Chart
-const ctx = document.getElementById('skillsRadarChart');
-if (ctx) {
-    new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: ['GIS/RS', 'UAV/Photogrammetry', 'Spatial Analysis', 'Programming', 'Data Management', 'Visualization'],
-            datasets: [{
-                label: 'Proficiency',
-                data: [95, 80, 90, 70, 85, 85],
-                backgroundColor: 'rgba(0, 180, 216, 0.2)',
-                borderColor: 'rgba(0, 107, 166, 1)',
-                borderWidth: 2
-            }]
-        },
-        options: {
-            scales: {
-                r: {
-                    angleLines: { display: true },
-                    suggestedMin: 0,
-                    suggestedMax: 100
+    if (featuredHeading) {
+        const headingObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const lines = featuredHeading.querySelectorAll('.featured-line');
+                    lines.forEach((line, index) => {
+                        setTimeout(() => {
+                            line.classList.add('animate');
+                        }, index * 300);
+                    });
                 }
-            }
-        }
-    });
-}
+            });
+        }, { threshold: 0.3 });
 
-// Interactive Maps with Leaflet (Example - Replace with your GeoJSON or tile layers)
-function initMap(mapId, lat, lng, zoom, tileUrl, geojsonData = null) {
-    const map = L.map(mapId).setView([lat, lng], zoom);
-    L.tileLayer(tileUrl, {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    if (geojsonData) {
-        L.geoJSON(geojsonData).addTo(map);
+        headingObserver.observe(featuredHeading);
     }
-    // Add example marker
-    L.marker([lat, lng]).addTo(map).bindPopup('Dhaka Center');
-}
 
-// Call for maps (use actual data)
-initMap('map-lulc', 23.8103, 90.4125, 11, 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-initMap('map-covid', 23.8103, 90.4125, 11, 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-
-// Lazy loading is already added via HTML attributes
 </script>
+
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="Project Image" class="img-fluid mb-4" style="max-height: 70vh; object-fit: contain;">
+                <h4 id="modalTitle" class="mb-3"></h4>
+                <p id="modalDesc" class="lead text-muted"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
+
+
+
+
+
