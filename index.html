@@ -253,6 +253,52 @@
             .profile-img { width: 150px; height: 150px; }
             .section-title { font-size: 2.2rem; }
         }
+
+
+        /* Featured Work intro lines */
+        .intro-line {
+            max-width: 760px;
+            margin: 0 auto 1.2rem;
+            color: var(--dark);
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .intro-left {
+            text-align: left;
+        }
+        
+        .intro-right {
+            text-align: right;
+        }
+        
+        /* Scroll animation trigger */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Optional: slight horizontal entrance variation */
+        .intro-left.animate-on-scroll {
+            transform: translateX(-60px);
+        }
+        
+        .intro-right.animate-on-scroll {
+            transform: translateX(60px);
+        }
+        
+        .intro-left.animate-on-scroll.visible,
+        .intro-right.animate-on-scroll.visible {
+            transform: translateX(0);
+        }
+
+        
     </style>
 </head>
 <body>
@@ -318,9 +364,16 @@
 <section id="featured" class="section bg-light">
     <div class="container">
         <h2 class="section-title text-center">Featured Work</h2>
-        <p class="text-center lead mb-5" style="max-width: 720px; margin-left: auto; margin-right: auto;">
-            Selected examples of advanced geospatial analysis, mapping, and visualization projects
-        </p>
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <p class="intro-line intro-left lead fs-4 fw-light animate-on-scroll">
+                Selected examples of advanced geospatial analysis, mapping, and visualization projects
+            </p>
+            <p class="intro-line intro-right lead fs-4 fw-light animate-on-scroll" style="text-align: right;">
+                Highlighting real-world impact through spatial intelligence and data-driven cartography
+            </p>
+        </div>
+    </div>
 
         <!-- Gallery Grid -->
         <div class="row g-4">
@@ -933,6 +986,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
