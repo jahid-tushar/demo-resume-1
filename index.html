@@ -553,6 +553,32 @@
         }
 
 
+
+
+    /* Better mobile experience for field work section */
+    @media (max-width: 767px) {
+        .main-image-wrapper img {
+            height: 50vh;               /* limit height so it doesn't take too much vertical space */
+            object-fit: cover;
+        }
+        
+        .overlay-text {
+            font-size: 1rem;            /* slightly smaller text on small screens */
+            padding: 1rem 0.8rem;
+        }
+        
+        .gallery-item {
+            width: 220px;               /* slightly smaller thumbnails on mobile */
+        }
+        
+        .gallery-img.small {
+            height: 140px;              /* shorter height for mobile */
+        }
+    }
+
+        
+
+
         
         
     </style>
@@ -1954,6 +1980,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
