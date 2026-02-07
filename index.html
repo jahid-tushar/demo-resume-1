@@ -11,25 +11,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
-            --primary: #0b84ff;
-            --primary-dark: #0056b3;
-            --primary-light: #4dabff;
-            --accent: #14c4c4;
-            --dark: #0f172a;
-            --gray: #64748b;
+            --primary: #006ba6;
+            --primary-dark: #004a87;
+            --primary-light: #0096c7;
+            --accent: #00b4d8;
+            --dark: #0d1b2a;
+            --gray: #495057;
             --light: #f8f9fa;
-            --bg: #f9fcff;
-            --text: #1e293b;
+            --bg: #f5f9fc;
+            --text: #2d3436;
         }
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text);
             background: var(--bg);
-            line-height: 1.75;
-            font-size: 1.05rem;
+            line-height: 1.7;
         }
         h1, h2, h3, h4, h5, .section-title {
             font-family: 'Playfair Display', serif;
@@ -37,17 +35,17 @@
         }
         .navbar {
             background-color: var(--dark);
-            padding: 1.4rem 0;
+            padding: 1.25rem 0;
             transition: all 0.4s ease;
         }
         .navbar.scrolled {
-            background-color: rgba(15, 23, 42, 0.96);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background-color: rgba(13, 27, 42, 0.96);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
         }
         .nav-link {
-            color: #e2e8f0 !important;
+            color: #ced4da !important;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: color 0.3s, transform 0.3s;
         }
         .nav-link:hover {
             color: var(--accent) !important;
@@ -56,49 +54,51 @@
         .hero {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
             color: white;
-            padding: 220px 0 160px;
+            padding: 180px 0 140px;
             position: relative;
-            overflow: hidden;
         }
         .hero::after {
             content: '';
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            height: 180px;
+            height: 140px;
             background: linear-gradient(to bottom, transparent, var(--bg));
         }
         .profile-img {
-            width: 260px;
-            height: 260px;
+            width: 240px;          /* made larger */
+            height: 240px;
             object-fit: cover;
-            border: 10px solid rgba(255,255,255,0.97);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            transition: all 0.5s ease;
-            margin-top: -60px;
+            border: 8px solid rgba(255,255,255,0.95);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.45);
+            transition: all 0.4s ease;
+            margin-top: -40px;     /* lifts image higher – creates overlap with navbar */
         }
+        
         .profile-img:hover {
-            transform: scale(1.08) rotate(3deg);
+            transform: scale(1.07) rotate(2deg);
         }
-        .hero-tags {
-            font-size: 1.3rem;
-            font-weight: 500;
-            opacity: 0.95;
-            margin: 1.2rem 0 1.8rem;
+        
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 991px) {
+            .profile-img {
+                width: 200px;
+                height: 200px;
+                margin-top: -30px;
+            }
         }
-        .contact-icons {
-            font-size: 1.6rem;
-            margin: 0 16px;
-            transition: all 0.3s;
-        }
-        .contact-icons:hover {
-            color: var(--accent);
-            transform: translateY(-4px);
+        
+        @media (max-width: 767px) {
+            .profile-img {
+                width: 170px;
+                height: 170px;
+                margin-top: -20px;
+            }
         }
         .section {
-            padding: 120px 0;
+            padding: 100px 0;
             opacity: 0;
-            transform: translateY(70px);
-            transition: all 1.1s ease-out;
+            transform: translateY(60px);
+            transition: all 1s ease-out;
         }
         .section.visible {
             opacity: 1;
@@ -108,68 +108,95 @@
             position: relative;
             display: inline-block;
             color: var(--dark);
-            margin-bottom: 3rem;
+            margin-bottom: 2.8rem;
         }
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -16px;
+            bottom: -14px;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
-            height: 6px;
+            width: 100px;
+            height: 5px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             border-radius: 3px;
         }
         .card {
             border: none;
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-            transition: all 0.45s ease;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.09);
+            transition: all 0.4s ease;
+            background: white;
         }
         .card:hover {
-            transform: translateY(-16px);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.18);
+            transform: translateY(-14px);
+            box-shadow: 0 28px 60px rgba(0,0,0,0.15);
         }
         .card-header {
             background: linear-gradient(90deg, var(--primary-dark), var(--primary));
             color: white;
             font-weight: 600;
-            padding: 1.5rem 1.8rem;
-            border-radius: 16px 16px 0 0;
+            padding: 1.4rem 1.6rem;
+            border-radius: 14px 14px 0 0;
         }
         .skill-icon {
             color: var(--accent);
-            font-size: 1.8rem;
-            margin-right: 16px;
+            font-size: 1.6rem;
+            margin-right: 14px;
         }
         .btn-download {
             background: linear-gradient(90deg, var(--primary), var(--accent));
             border: none;
-            padding: 16px 48px;
+            padding: 14px 40px;
             font-weight: 600;
             border-radius: 50px;
-            transition: all 0.4s ease;
+            transition: all 0.35s ease;
         }
         .btn-download:hover {
             background: linear-gradient(90deg, var(--accent), var(--primary));
-            transform: translateY(-5px);
-            box-shadow: 0 16px 40px rgba(20, 196, 196, 0.35);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(0, 180, 216, 0.4);
         }
         .list-unstyled li {
             margin-bottom: 0.9rem;
             position: relative;
-            padding-left: 2.2rem;
+            padding-left: 2rem;
         }
         .list-unstyled li::before {
             content: "•";
             color: var(--primary);
             position: absolute;
             left: 0;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             line-height: 1;
         }
+        .list-group-item {
+            border: none;
+            background: transparent;
+            padding: 0.75rem 0;
+        }
+        footer {
+            background: var(--dark);
+            color: #adb5bd;
+            padding: 80px 0 40px;
+        }
+        footer a {
+            color: #e9ecef;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: var(--accent);
+        }
+        .contact-info i {
+            color: var(--accent);
+            width: 30px;
+            text-align: center;
+        }
+
+        
+
+        /* Featured Work / Gallery styles - Consistent & Future-Proof Grid */
         .gallery-card {
             position: relative;
             overflow: hidden;
@@ -181,89 +208,181 @@
             flex-direction: column;
             height: 100%;
         }
-        .gallery-card:hover {
-            transform: translateY(-16px);
-            box-shadow: 0 32px 70px rgba(0,0,0,0.2);
-        }
-        .gallery-img-wrapper {
+
+        .gallery-card .gallery-img-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 75%;
+            padding-top: 75%;                   /* 4:3 aspect ratio – change to 56.25% for wider (16:9) */
             overflow: hidden;
             flex-shrink: 0;
         }
-        .gallery-img {
+
+        .gallery-card .gallery-img {
             position: absolute;
             top: 0; left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.7s ease;
+            transition: transform 0.6s ease;
         }
+
         .gallery-card:hover .gallery-img {
-            transform: scale(1.12);
+            transform: scale(1.08);
         }
+
         .gallery-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 40%, transparent 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.65) 40%, transparent 100%);
             color: white;
-            padding: 1.6rem 1.4rem;
-            min-height: 130px;
+            padding: 1.4rem 1.25rem 1.25rem;
+            transition: all 0.4s ease;
+            min-height: 110px;
         }
+
         .gallery-title {
-            font-size: 1.28rem;
+            font-size: 1.24rem;
             font-weight: 700;
             line-height: 1.38;
-            margin-bottom: 0.6rem;
+            margin: 0 0 0.6rem 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        .project-tags {
-            margin-top: 0.8rem;
-            font-size: 0.88rem;
+
+        /* Make grid items stretch cards to equal height */
+        .row.g-4 > div {
+            display: flex;
         }
-        .project-tags span {
-            background: rgba(255,255,255,0.22);
-            padding: 4px 12px;
-            border-radius: 30px;
-            margin-right: 6px;
-            font-weight: 500;
+
+        .row.g-4 > div .gallery-card {
+            flex: 1;
         }
-        .video-carousel-wrapper, .gallery-wrapper {
+
+        @media (max-width: 991px) {
+            .hero { padding: 160px 0 120px; }
+            .profile-img { width: 170px; height: 170px; }
+        }
+        @media (max-width: 767px) {
+            .hero { padding: 140px 0 100px; }
+            .profile-img { width: 150px; height: 150px; }
+            .section-title { font-size: 2.2rem; }
+        }
+
+
+
+                /* Featured Work Animated Heading */
+        .featured-heading {
+            margin-bottom: 3rem;
+        }
+        
+        .featured-line {
+            font-family: 'Playfair Display', serif;
+            opacity: 0;
+            transform: translateX(80px);
+            transition: all 1s ease;
+        }
+        
+        .left-line {
+            text-align: left;
+            font-size: 2.8rem;
+            transform: translateX(-100px);
+        }
+        
+        .right-line {
+            text-align: right;
+            font-size: 1.2rem;
+            max-width: 720px;
+            margin-left: auto;
+            color: var(--gray);
+        }
+        
+        .featured-line.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+
+        /* Horizontal Video Carousel */
+        .video-carousel-wrapper {
             position: relative;
         }
-        .video-carousel, .gallery-scroll {
+        
+        .video-carousel {
             scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+            scrollbar-width: thin; /* Firefox */
         }
-        .video-carousel::-webkit-scrollbar, .gallery-scroll::-webkit-scrollbar {
+        
+        .video-carousel::-webkit-scrollbar {
             height: 8px;
         }
-        .video-carousel::-webkit-scrollbar-track, .gallery-scroll::-webkit-scrollbar-track {
+        
+        .video-carousel::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-        .video-carousel::-webkit-scrollbar-thumb, .gallery-scroll::-webkit-scrollbar-thumb {
+        
+        .video-carousel::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 10px;
         }
+        
         .video-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        
         .video-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
+        
+        .video-card h5 {
+            font-size: 1.05rem;
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+
+
+
+
+        .gallery-wrapper {
+            position: relative;
+        }
+        
+        .gallery-scroll {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
         .gallery-item {
             width: 280px;
             cursor: pointer;
         }
+        
         .gallery-img {
             width: 100%;
             height: 200px;
@@ -272,76 +391,83 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.12);
             transition: all 0.35s ease;
         }
+        
         .gallery-img:hover {
             transform: scale(1.06);
             box-shadow: 0 12px 30px rgba(0,0,0,0.22);
         }
+
+
         .pdf-preview-wrapper {
             position: relative;
-            padding-top: 80%;
+            padding-top: 80%;           /* adjust ratio – 80% ≈ good for PDFs */
             overflow: hidden;
             background: #f1f3f5;
         }
+        
         .pdf-preview-wrapper iframe {
             position: absolute;
-            top: 0; left: 0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: none;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
+
+
+
+
+                .video-carousel-wrapper {
+            position: relative;
+        }
+        
+        .video-carousel {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        
+        .video-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .video-carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .video-carousel::-webkit-scrollbar-thumb {
             background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            z-index: 1000;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-            font-size: 1.4rem;
+            border-radius: 10px;
         }
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
+        
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        footer {
-            background: var(--dark);
-            color: #cbd5e1;
-            padding: 100px 0 50px;
+        
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
-        footer a {
-            color: #e2e8f0;
-            transition: color 0.3s;
+        
+        .video-card h5 {
+            font-size: 1.05rem;
+            line-height: 1.4;
+            padding: 0 10px;
         }
-        footer a:hover {
-            color: var(--accent);
-        }
-        .contact-info i {
-            color: var(--accent);
-            width: 32px;
-            text-align: center;
-        }
-        @media (max-width: 991px) {
-            .hero { padding: 180px 0 140px; }
-            .profile-img { width: 220px; height: 220px; margin-top: -40px; }
-        }
-        @media (max-width: 767px) {
-            .hero { padding: 160px 0 120px; }
-            .profile-img { width: 180px; height: 180px; margin-top: -30px; }
-            .section { padding: 80px 0; }
-        }
+
+
+
+        
+        
+        
     </style>
 </head>
 <body>
-
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
@@ -368,28 +494,25 @@
 <!-- Hero -->
 <section class="hero text-center">
     <div class="container">
-        <img src="GIS and RS_Experience_Collage/4_Professional Photo.jpg"
-             alt="Mohammad Jahidul Islam Tushar"
-             class="rounded-circle profile-img mb-5 shadow-lg" loading="lazy">
-       
-        <h1 class="display-2 fw-bold mb-2">Mohammad Jahidul Islam Tushar</h1>
-        <h3 class="fw-light mb-3">Deputy GIS Specialist | Spatial Analysis & Remote Sensing</h3>
-       
-        <p class="hero-tags">
-            Spatial Analysis • Remote Sensing • UAV Photogrammetry • Geospatial Modeling • Data Automation
-        </p>
-
+        <img src="GIS and RS_Experience_Collage/4_Professional Photo.jpg" 
+             alt="Mohammad Jahidul Islam Tushar" 
+             class="rounded-circle profile-img mb-4 shadow-lg">
+        
+        <h1 class="display-3 fw-bold mb-2 mt-3">Mohammad Jahidul Islam Tushar</h1>
+        <h3 class="fw-light mb-4">Deputy GIS Specialist | Spatial Analysis & Remote Sensing</h3>
+        
         <p class="lead mb-4">
             <i class="fas fa-map-marker-alt me-2"></i> Dhaka, Bangladesh
         </p>
-       
-        <div class="mb-5">
-            <a href="tel:+8801521108306" class="text-white contact-icons"><i class="fas fa-phone"></i></a>
-            <a href="mailto:jahidhtushar448@gmail.com" class="text-white contact-icons"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/jahid-tushar1996" target="_blank" class="text-white contact-icons"><i class="fab fa-linkedin"></i></a>
-        </div>
-       
-        <a href="documents/CV_Mohammad_Jahidul_Islam_Tushar.pdf" download
+        
+        <p class="mb-5 fs-5 contact-info">
+            <i class="fas fa-phone me-2"></i> +880 1521-108306<br>
+            <i class="fas fa-envelope me-2"></i> jahidhtushar448@gmail.com<br>
+            <i class="fab fa-linkedin me-2"></i>
+            <a href="https://www.linkedin.com/in/jahid-tushar1996" class="text-white text-decoration-none">linkedin.com/in/jahid-tushar1996</a>
+        </p>
+        
+        <a href="documents/CV_Mohammad_Jahidul_Islam_Tushar.pdf" download 
            class="btn btn-download btn-lg mt-2">
             <i class="fas fa-file-arrow-down me-2"></i> Download Full CV
         </a>
@@ -413,8 +536,18 @@
 <!-- Featured Work -->
 <section id="featured" class="section bg-light">
     <div class="container">
-        <h2 class="section-title text-center mb-5">Featured Work</h2>
+    <div class="featured-heading mb-5">
+        <h2 class="featured-line left-line">Featured Work</h2>
+        <p class="featured-line right-line">
+            Selected examples of advanced geospatial analysis, mapping, and visualization projects
+        </p>
+    </div>
+
+
+        <!-- Gallery Grid -->
         <div class="row g-4">
+            
+            <!-- Project 1 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Advanced Analysis.jpg"
@@ -423,16 +556,15 @@
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Advanced Analysis.jpg"
                              alt="Advanced Geospatial Analysis"
-                             class="gallery-img" loading="lazy">
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Advanced Spatial Analysis & Modeling</div>
-                        <div class="project-tags">
-                            <span>ArcGIS Pro</span><span>LULC</span><span>Change Detection</span>
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Project 2 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Study Area Mapping with advance analysis and INTERACTIVE Diagram.jpg"
@@ -441,16 +573,15 @@
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Study Area Mapping with advance analysis and INTERACTIVE Diagram.jpg"
                              alt="Study Area Mapping with advance analysis and INTERACTIVE Diagram"
-                             class="gallery-img" loading="lazy">
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Geospatial Analysis of Bangladesh: Environment, Health & Urban Insights</div>
-                        <div class="project-tags">
-                            <span>Hotspot Analysis</span><span>Flood Modeling</span><span>Geostatistics</span>
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Project 3 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Image Classification.jpg"
@@ -459,16 +590,15 @@
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Image Classification.jpg"
                              alt="Advanced Geospatial Analysis"
-                             class="gallery-img" loading="lazy">
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Urban Evolution Unveiled: Multi-Decade Land Use & Land Cover Transformation in Dhaka Metropolitan City (1972–2019)</div>
-                        <div class="project-tags">
-                            <span>Landsat</span><span>Classification</span><span>Urban Growth</span>
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Project 4 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Digitizng.jpg"
@@ -477,16 +607,15 @@
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Digitizng.jpg"
                              alt="Advanced Geospatial Analysis"
-                             class="gallery-img" loading="lazy">
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Precision Cartography in Action: Georeferencing, Digitization, and Advanced Map Composition Using ArcMap</div>
-                        <div class="project-tags">
-                            <span>Georeferencing</span><span>Digitization</span><span>Cartography</span>
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Project 5 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Attractive Map 2.jpg"
@@ -495,16 +624,15 @@
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Attractive Map 2.jpg"
                              alt="Advanced Geospatial Analysis"
-                             class="gallery-img" loading="lazy">
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">From Global Perspectives to Local Insights: Satellite-Derived Maps and Multi-Scale Geospatial Visualizations</div>
-                        <div class="project-tags">
-                            <span>Satellite</span><span>Night Lights</span><span>Multi-scale</span>
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Project 6 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Collecting Geolocatoions SOP.jpg"
@@ -513,16 +641,15 @@
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Collecting Geolocatoions SOP.jpg"
                              alt="Advanced Geospatial Analysis"
-                             class="gallery-img" loading="lazy">
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Seamless Geospatial Data Processing: Geocoding, Coordinate Conversion, and 3D Terrain Exploration in Google Earth Pro</div>
-                        <div class="project-tags">
-                            <span>Google Earth</span><span>Geocoding</span><span>3D Terrain</span>
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Project 7 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Attractive Map.jpg"
@@ -531,16 +658,15 @@
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Attractive Map.jpg"
                              alt="Advanced Geospatial Analysis"
-                             class="gallery-img" loading="lazy">
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Demographic & Health Insights Through GIS: 60+ Population Density and COVID-19 Case Distribution in Dhaka & Bangladesh</div>
-                        <div class="project-tags">
-                            <span>Kernel Density</span><span>Health GIS</span><span>COVID-19</span>
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Project 8 -->
             <div class="col-md-6 col-lg-4">
                 <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#projectModal"
                      data-img="GIS and RS_Experience_Collage/Logo Poster Banner.jpg"
@@ -549,16 +675,14 @@
                     <div class="gallery-img-wrapper">
                         <img src="GIS and RS_Experience_Collage/Logo Poster Banner.jpg"
                              alt="Advanced Geospatial Analysis"
-                             class="gallery-img" loading="lazy">
+                             class="gallery-img">
                     </div>
                     <div class="gallery-overlay">
                         <div class="gallery-title">Building Geospatial Excellence: Designing Live Training, ArcGIS Mastery Courses & Global Learner Impact Posters</div>
-                        <div class="project-tags">
-                            <span>GIS Training</span><span>ArcGIS</span><span>Education</span>
-                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -571,7 +695,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-                <img id="modalImage" src="" alt="Project Image" class="img-fluid mb-4" style="max-height: 70vh; object-fit: contain;" loading="lazy">
+                <img id="modalImage" src="" alt="Project Image" class="img-fluid mb-4" style="max-height: 70vh; object-fit: contain;">
                 <h4 id="modalTitle" class="mb-3"></h4>
                 <p id="modalDesc" class="lead text-muted"></p>
             </div>
@@ -582,52 +706,114 @@
     </div>
 </div>
 
+
+    
 <!-- GIS & RS Tutorials -->
 <section id="tutorials" class="section bg-white">
     <div class="container">
         <h2 class="section-title text-center">GIS & Remote Sensing Tutorials</h2>
         <p class="text-center lead mb-5">Practical video tutorials on ArcGIS, Remote Sensing, Python scripting, and geospatial analysis</p>
+
         <!-- Horizontal scrollable video carousel -->
         <div class="video-carousel-wrapper mt-4">
             <div class="video-carousel d-flex flex-nowrap overflow-auto pb-4 gap-4">
+                
+                <!-- Video 1 -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://www.youtube.com/embed/dVpZOpElBHc" title="Multispectral vs Hyperspectral Images" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/dVpZOpElBHc"
+                            title="Multispectral vs Hyperspectral Images"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Multispectral vs Hyperspectral Images</h5>
                 </div>
+
+                <!-- Video 2 -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://www.youtube.com/embed/Z7_ueqBDQkI" title="Applications of GIS in Daily Life" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/Z7_ueqBDQkI"
+                            title="Applications of GIS in Daily Life"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Applications of GIS in Daily Life</h5>
                 </div>
+
+                <!-- New Video 3 -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://www.youtube.com/embed/_Y7s3LocS-U" title="Coordinate Systems in GIS & Remote Sensing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/_Y7s3LocS-U"
+                            title="Coordinate Systems in GIS & Remote Sensing"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Coordinate Systems in GIS & Remote Sensing</h5>
                 </div>
+
+                <!-- New Video 4 -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://www.youtube.com/embed/7tnbF8ywZZE" title="How to make lucrative GIS map using road network layer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/7tnbF8ywZZE"
+                            title="How to make lucrative GIS map using road network layer"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">How to make lucrative GIS map using road network layer</h5>
                 </div>
+
+                <!-- New Video 5 -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://www.youtube.com/embed/wXVK69TxXEA" title="Spatial Data Types in GIS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/wXVK69TxXEA"
+                            title="Spatial Data Types in GIS"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Spatial Data Types in GIS</h5>
                 </div>
+
+                <!-- New Video 6 -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://www.youtube.com/embed/8yg08_piUKQ" title="Efficient Geocoding in ArcMap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/8yg08_piUKQ"
+                            title="Efficient Geocoding in ArcMap"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Efficient Geocoding in ArcMap: Manual vs Automatic</h5>
                 </div>
+
+                <!-- You can keep adding more .video-card blocks here -->
+
             </div>
         </div>
+
+        <!-- Watch more button -->
         <div class="text-center mt-5">
             <a href="https://www.youtube.com/@georc" target="_blank" class="btn btn-primary btn-lg">
                 <i class="fab fa-youtube me-2"></i> Watch More on YouTube
@@ -635,7 +821,7 @@
         </div>
     </div>
 </section>
-
+    
 <!-- Core Competencies -->
 <section id="skills" class="section bg-light">
     <div class="container">
@@ -705,107 +891,208 @@
     </div>
 </section>
 
-<!-- Practical Demonstrations -->
+
+
+
+
+
+<!-- Practical Demonstrations - Screen Recordings -->
 <section id="demos" class="section bg-white">
     <div class="container">
         <h2 class="section-title text-center">Practical Demonstrations – GIS & Remote Sensing Workflows</h2>
         <p class="text-center lead mb-5">
-            A collection of screen-recorded demonstrations showcasing real-world GIS/RS workflows, client projects, university assignments, personal research, and tool explorations — from data preparation to advanced analysis and visualization.
+            A collection of screen-recorded demonstrations showcasing real-world GIS/RS workflows, 
+            client projects, university assignments, personal research, and tool explorations — 
+            from data preparation to advanced analysis and visualization.
         </p>
+
+        <!-- Horizontal scrollable video carousel -->
         <div class="video-carousel-wrapper mt-4">
             <div class="video-carousel d-flex flex-nowrap overflow-auto pb-4 gap-4">
+
+                <!-- 1. Time Series Animation - COVID-19 -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/730746508?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/730746508?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">COVID-19 Time Series Animation</h5>
                 </div>
+
+                <!-- 2. ArcGIS Online Interface -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/773712136?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/773712136?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Exploring ArcGIS Online Interface</h5>
                 </div>
+
+                <!-- 3. Hot Spot Analysis -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/787188216?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/787188216?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Hot Spot Analysis Demonstration</h5>
                 </div>
+
+                <!-- 4. Client Project - Remote Sensing & GIS -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/756643196?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/756643196?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Client Project – Remote Sensing & GIS Workflow</h5>
                 </div>
+
+                <!-- 5. OSM Interface -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/748640642?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/748640642?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">OpenStreetMap – Interface, Sharing & Editing</h5>
                 </div>
+
+                <!-- 6. Geo Check Screen Video -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/1109424728?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/1109424728?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Georeferencing & Quality Check Workflow</h5>
                 </div>
+
+                <!-- 7. GEE SRTM Slope & Statistics -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/786782340?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/786782340?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Google Earth Engine – SRTM Slope & Zonal Statistics</h5>
                 </div>
+
+                <!-- 8. Landscape Transformation -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/784533122?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/784533122?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Landscape Change Detection Using Satellite Imagery</h5>
                 </div>
+
+                <!-- 9. Referencing Work -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/760724881?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/760724881?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Map Referencing & Georeferencing Techniques</h5>
                 </div>
+
+                <!-- 10. Downloading Satellite Images -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/764269872?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/764269872?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Downloading & Preprocessing Satellite Imagery (MSc Project)</h5>
                 </div>
+
+                <!-- 11. Earthquake Vulnerability -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/739259670?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/739259670?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Earthquake Vulnerability Mapping Project</h5>
                 </div>
+
+                <!-- 12. ERDAS Image Processing -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/735884067?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/735884067?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">ERDAS – Subset, Classification & NDVI Analysis</h5>
                 </div>
+
+                <!-- 13. COVID-19 Animated Documentation -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/732735121?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/732735121?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">COVID-19 Spread – Animated Documentation</h5>
                 </div>
+
+                <!-- 14. WordPress Website Update -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/732539052?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/732539052?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">WordPress Website Content & Update Demo</h5>
                 </div>
+
+                <!-- 15. Excel to Map -->
                 <div class="video-card flex-shrink-0" style="width: 360px;">
                     <div class="ratio ratio-16x9 rounded shadow mb-3">
-                        <iframe src="https://player.vimeo.com/video/730693108?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://player.vimeo.com/video/730693108?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                     </div>
                     <h5 class="text-center mb-0">Converting Excel Data to Interactive Maps</h5>
                 </div>
+
             </div>
         </div>
+
         <div class="text-center mt-5">
             <p class="text-muted">
                 These recordings capture real workflows from academic, freelance, client, and personal projects.
@@ -816,12 +1103,21 @@
         </div>
     </div>
 </section>
+    
+
+
+
+    
+
+
+    
 
 <!-- Professional Experience -->
 <section id="experience" class="section">
     <div class="container">
         <h2 class="section-title text-center">Professional Experience</h2>
         <div class="row g-4">
+            <!-- Deputy GIS Specialist -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -841,6 +1137,7 @@
                     </div>
                 </div>
             </div>
+            <!-- GIS Data Quality Manager -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -859,6 +1156,7 @@
                     </div>
                 </div>
             </div>
+            <!-- GIS Expert -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -877,6 +1175,7 @@
                     </div>
                 </div>
             </div>
+            <!-- GIS Business Development Executive -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -895,6 +1194,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Technical Consultant -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -913,6 +1213,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Executive Management Team Member -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -930,6 +1231,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Research Assistant -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -953,150 +1255,187 @@
     </div>
 </section>
 
-<!-- Field Work Experience -->
+
+
+
+
+<!-- Field Work Experience - National Rabies Control Program -->
 <section id="fieldwork" class="section bg-white">
     <div class="container">
         <h2 class="section-title text-center">Field Work & Training – National Rabies Control Program</h2>
         <p class="text-center lead mb-5">
-            Delivered hands-on GIS/RS and mobile data collection training to field staff across multiple upazilas in Bangladesh.
+            Delivered hands-on GIS/RS and mobile data collection training to field staff across multiple upazilas in Bangladesh. 
             These sessions significantly improved data accuracy and strengthened rabies surveillance under the national health program.
         </p>
+
+        <!-- Horizontal scrollable gallery - YouTube style -->
         <div class="gallery-wrapper mt-4">
             <div class="gallery-scroll d-flex flex-nowrap overflow-auto pb-4 gap-3">
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 1 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (1).jpg"
                      data-caption="Training session on mobile data collection tools">
                     <img src="National Rabies Control Program/National Rabies Control Program (1).jpg"
                          alt="Rabies Control Program training session in upazila"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 2 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (2).jpg"
                      data-caption="Participants actively learning GIS data entry">
                     <img src="National Rabies Control Program/National Rabies Control Program (2).jpg"
                          alt="Field training participants group photo"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 3 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (3).jpg"
                      data-caption="GIS and remote sensing training for field officers">
                     <img src="National Rabies Control Program/National Rabies Control Program (3).jpg"
                          alt="GIS training session in progress"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 4 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (4).jpg"
                      data-caption="Hands-on practice with Kobo Collect forms">
                     <img src="National Rabies Control Program/National Rabies Control Program (4).jpg"
                          alt="Data collection training demonstration"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 5 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (5).jpg"
                      data-caption="Group discussion during rabies surveillance workshop">
                     <img src="National Rabies Control Program/National Rabies Control Program (5).jpg"
                          alt="Group session in rural upazila"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 6 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (6).jpg"
                      data-caption="Field team training on geolocation tagging">
                     <img src="National Rabies Control Program/National Rabies Control Program (6).jpg"
                          alt="Rabies program field work training"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 7 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (7).jpg"
                      data-caption="Training conducted in multiple upazilas">
                     <img src="National Rabies Control Program/National Rabies Control Program (7).jpg"
                          alt="Training across different upazilas"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 8 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (8).jpg"
                      data-caption="Demonstration of real-time data submission">
                     <img src="National Rabies Control Program/National Rabies Control Program (8).jpg"
                          alt="Mobile data collection demo"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 9 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (9).jpg"
                      data-caption="Rabies awareness and data accuracy session">
                     <img src="National Rabies Control Program/National Rabies Control Program (9).jpg"
                          alt="Rabies awareness training activity"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 10 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (10).jpg"
                      data-caption="Field officers receiving certificates">
                     <img src="National Rabies Control Program/National Rabies Control Program (10).jpg"
                          alt="Field team after training"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 11 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (11).jpg"
                      data-caption="Upazila-level GIS and mapping workshop">
                     <img src="National Rabies Control Program/National Rabies Control Program (11).jpg"
                          alt="Upazila GIS workshop"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 12 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (12).jpg"
                      data-caption="Practical session on rabies case reporting">
                     <img src="National Rabies Control Program/National Rabies Control Program (12).jpg"
                          alt="Rabies control program activity"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 13 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (13).jpg"
                      data-caption="Participants engaged in group training">
                     <img src="National Rabies Control Program/National Rabies Control Program (13).jpg"
                          alt="Training participants group photo"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
-                <div class="gallery-item flex-shrink-0"
-                     data-bs-toggle="modal"
+
+                <!-- Image 14 -->
+                <div class="gallery-item flex-shrink-0" 
+                     data-bs-toggle="modal" 
                      data-bs-target="#imageModal"
                      data-img-src="National Rabies Control Program/National Rabies Control Program (14).jpg"
                      data-caption="Field training closing session">
                     <img src="National Rabies Control Program/National Rabies Control Program (14).jpg"
                          alt="National Rabies Control field session"
-                         class="gallery-img" loading="lazy">
+                         class="gallery-img">
                 </div>
+
             </div>
         </div>
+
         <p class="text-center mt-5 text-muted fst-italic">
             Scroll left or right to view photos from various training sessions conducted under the National Rabies Control Program across Bangladesh.
         </p>
     </div>
 </section>
 
+<!-- Image Modal (lightbox popup) -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content bg-dark border-0">
@@ -1105,7 +1444,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center p-3">
-                <img id="modalImage" src="" alt="Enlarged training photo" class="img-fluid rounded" style="max-height: 82vh;" loading="lazy">
+                <img id="modalImage" src="" alt="Enlarged training photo" class="img-fluid rounded" style="max-height: 82vh;">
             </div>
             <div class="modal-footer border-0 pt-0 justify-content-center">
                 <small id="modalCaption" class="text-white-75"></small>
@@ -1114,6 +1453,18 @@
     </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+    
 <!-- Education -->
 <section id="education" class="section bg-light">
     <div class="container">
@@ -1176,37 +1527,80 @@
     <div class="container">
         <h2 class="section-title text-center">Interactive Story Maps & Dashboards</h2>
         <p class="text-center lead mb-5">Explore geospatial narratives, urban analysis, environmental stories, network visualizations, and mapping workflows</p>
+
+        <!-- Horizontal scrollable maps carousel -->
         <div class="video-carousel-wrapper mt-4">
             <div class="video-carousel d-flex flex-nowrap overflow-auto pb-4 gap-4">
+
+
+
+
+                <!-- Dashboard 1 -->
                 <div class="video-card flex-shrink-0" style="width: 520px;">
                     <div class="ratio ratio-4x3 rounded shadow mb-3">
-                        <iframe src="https://www.google.com/maps/d/embed?mid=1UBEDo2ro5962kqDBcA-Gt04QEoyqMHQ" title="Service Areas Dashboard" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.google.com/maps/d/embed?mid=1UBEDo2ro5962kqDBcA-Gt04QEoyqMHQ"
+                            title="Service Areas Dashboard"
+                            frameborder="0"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Service Areas Dashboard</h5>
                 </div>
+
+                
+
+                <!-- Dashboard 2 -->
                 <div class="video-card flex-shrink-0" style="width: 520px;">
                     <div class="ratio ratio-4x3 rounded shadow mb-3">
-                        <iframe src="https://www.google.com/maps/d/embed?mid=14LD9gkOogZckDv1x3KJfxYljr32y0zBC" title="Worldwide Projections" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.google.com/maps/d/embed?mid=14LD9gkOogZckDv1x3KJfxYljr32y0zBC"
+                            title="Worldwide Projections"
+                            frameborder="0"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Worldwide Projections</h5>
                 </div>
+
+                <!-- Dashboard 3 -->
                 <div class="video-card flex-shrink-0" style="width: 520px;">
                     <div class="ratio ratio-4x3 rounded shadow mb-3">
-                        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1UBEDo2ro5962kqDBcA-Gt04QEoyqMHQ" title="Wireless Network Map" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.google.com/maps/d/u/0/embed?mid=1UBEDo2ro5962kqDBcA-Gt04QEoyqMHQ"
+                            title="Wireless Network Map"
+                            frameborder="0"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Wireless Network Map</h5>
                 </div>
+
+                <!-- Dashboard 4 -->
                 <div class="video-card flex-shrink-0" style="width: 520px;">
                     <div class="ratio ratio-4x3 rounded shadow mb-3">
-                        <iframe src="https://www.google.com/maps/d/embed?mid=1M7sk43MPvmi5avNPdH8W-_-3-7hBUvc" title="Layout & Print Dashboard Mouza Mapping" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.google.com/maps/d/embed?mid=1M7sk43MPvmi5avNPdH8W-_-3-7hBUvc"
+                            title="Layout & Print Dashboard Mouza Mapping"
+                            frameborder="0"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
                     <h5 class="text-center mb-0">Layout & Print Dashboard Mouza Mapping</h5>
                 </div>
+
+                <!-- You can add more maps/dashboards here by copying the block above -->
+
             </div>
         </div>
     </div>
 </section>
 
+    
 <!-- Professional Activities & Contributions -->
 <section id="activities" class="section bg-light">
     <div class="container">
@@ -1282,53 +1676,73 @@
     <div class="container">
         <h2 class="section-title text-center">Mapbook Collection</h2>
         <p class="text-center lead mb-5">
-            A curated selection of cartographic works and geospatial atlases showcasing population demographics,
+            A curated selection of cartographic works and geospatial atlases showcasing population demographics, 
             regional geography, topographic boundaries, and key landmarks.
         </p>
+
         <div class="row g-4 justify-content-center">
+            
+            <!-- Mapbook 1 -->
             <div class="col-lg-6 col-md-10">
                 <div class="card shadow-lg border-0 h-100 overflow-hidden">
                     <div class="pdf-preview-wrapper">
                         <iframe src="https://drive.google.com/file/d/1R_3UlpmWQoLJYE8LIJ75q_l2b8n18MvR/preview"
-                                width="100%" height="600" style="border: none;" allowfullscreen loading="lazy"></iframe>
+                                width="100%" 
+                                height="600" 
+                                style="border: none;"
+                                allowfullscreen 
+                                loading="lazy"></iframe>
                     </div>
                     <div class="card-body text-center p-4">
                         <h4 class="card-title mb-3">World Atlas: A Visual Exploration of World Population Demographics</h4>
                         <p class="text-muted mb-4">
                             Global population insights through thematic maps, density visualizations, and demographic patterns.
                         </p>
-                        <a href="https://drive.google.com/uc?export=download&id=1R_3UlpmWQoLJYE8LIJ75q_l2b8n18MvR"
-                           class="btn btn-download btn-lg" download>
+                        <a href="https://drive.google.com/uc?export=download&id=1R_3UlpmWQoLJYE8LIJ75q_l2b8n18MvR" 
+                           class="btn btn-download btn-lg" 
+                           download>
                             <i class="fas fa-file-pdf me-2"></i> Download World Atlas (PDF)
                         </a>
                     </div>
                 </div>
             </div>
+
+            <!-- Mapbook 2 -->
             <div class="col-lg-6 col-md-10">
                 <div class="card shadow-lg border-0 h-100 overflow-hidden">
                     <div class="pdf-preview-wrapper">
                         <iframe src="https://drive.google.com/file/d/1rLTmgfyKYo-NYO4wIlyYds2jhFoVAJi9/preview"
-                                width="100%" height="600" style="border: none;" allowfullscreen loading="lazy"></iframe>
+                                width="100%" 
+                                height="600" 
+                                style="border: none;"
+                                allowfullscreen 
+                                loading="lazy"></iframe>
                     </div>
                     <div class="card-body text-center p-4">
                         <h4 class="card-title mb-3">Bangladesh Regional Geoatlas: Mapping Topographic Boundaries and Landmarks</h4>
                         <p class="text-muted mb-4">
                             Detailed regional atlas featuring topographic features, administrative boundaries, and key landmarks of Bangladesh.
                         </p>
-                        <a href="https://drive.google.com/uc?export=download&id=1CnldqukxHujlvVzyc3i8VNjW5d_xCU4Z"
-                           class="btn btn-download btn-lg" download>
+                        <a href="https://drive.google.com/uc?export=download&id=1CnldqukxHujlvVzyc3i8VNjW5d_xCU4Z" 
+                           class="btn btn-download btn-lg" 
+                           download>
                             <i class="fas fa-file-pdf me-2"></i> Download Bangladesh Geoatlas (PDF)
                         </a>
                     </div>
                 </div>
             </div>
+
         </div>
+
         <div class="text-center mt-5 text-muted small">
             <p>PDF previews are powered by Google Drive • Best viewed on desktop • Download for full-resolution experience</p>
         </div>
     </div>
 </section>
 
+
+
+    
 <!-- References -->
 <section id="references" class="section bg-light">
     <div class="container">
@@ -1368,18 +1782,13 @@
 <!-- Footer -->
 <footer class="text-center">
     <div class="container">
-        <p class="mb-4">© <script>document.write(new Date().getFullYear());</script> Mohammad Jahidul Islam Tushar. All rights reserved.</p>
+        <p class="mb-4">© 2026 Mohammad Jahidul Islam Tushar. All rights reserved.</p>
         <div class="mb-4">
-            <a href="https://www.linkedin.com/in/jahid-tushar1996" class="mx-4 fs-3 text-white"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:jahidhtushar448@gmail.com" class="mx-4 fs-3 text-white"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/jahid-tushar1996" class="mx-4 fs-3"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:jahidhtushar448@gmail.com" class="mx-4 fs-3"><i class="fas fa-envelope"></i></a>
         </div>
     </div>
 </footer>
-
-<!-- Back to Top Button -->
-<a href="#" class="back-to-top" id="backToTop">
-    <i class="fas fa-arrow-up"></i>
-</a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -1399,45 +1808,117 @@
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
 
-    // Project modal
-    document.addEventListener('DOMContentLoaded', function () {
-        const projectModal = document.getElementById('projectModal');
-        if (projectModal) {
-            projectModal.addEventListener('show.bs.modal', function (event) {
-                const card = event.relatedTarget;
-                const imgSrc = card.getAttribute('data-img');
-                const title = card.getAttribute('data-title');
-                const desc = card.getAttribute('data-desc');
-                document.getElementById('modalImage').src = imgSrc;
-                document.getElementById('modalTitle').textContent = title;
-                document.getElementById('modalDesc').textContent = desc;
-            });
-        }
 
-        // Field work image modal
-        const imageModal = document.getElementById('imageModal');
-        if (imageModal) {
-            imageModal.addEventListener('show.bs.modal', function (event) {
-                const trigger = event.relatedTarget;
-                const src = trigger.getAttribute('data-img-src');
-                const caption = trigger.getAttribute('data-caption');
-                document.getElementById('modalImage').src = src;
-                document.getElementById('modalCaption').textContent = caption || '';
-                document.getElementById('imageModalLabel').textContent = caption || 'Field Training Photo';
-            });
-        }
 
-        // Back to top visibility
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
+    
+
+    // ────────────────────────────────────────────────
+    // NEW: Dynamic modal content for featured projects
+document.addEventListener('DOMContentLoaded', function () {
+    const projectModal = document.getElementById('projectModal');
+    if (projectModal) {
+        projectModal.addEventListener('show.bs.modal', function (event) {
+            const card = event.relatedTarget;
+            const imgSrc = card.getAttribute('data-img');
+            const title = card.getAttribute('data-title');
+            const desc = card.getAttribute('data-desc');
+            
+            const modalImg = projectModal.querySelector('#modalImage');
+            const modalTitle = projectModal.querySelector('#modalTitle');
+            const modalDesc = projectModal.querySelector('#modalDesc');
+            
+            modalImg.src = imgSrc;
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
         });
-    });
+    }
+});
+    // ────────────────────────────────────────────────
+    const featuredHeading = document.querySelector('.featured-heading');
+
+    if (featuredHeading) {
+        const headingObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const lines = featuredHeading.querySelectorAll('.featured-line');
+                    lines.forEach((line, index) => {
+                        setTimeout(() => {
+                            line.classList.add('animate');
+                        }, index * 300);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        headingObserver.observe(featuredHeading);
+    }
+
+
+
+
+// Gallery modal - fill image and caption when opening
+document.addEventListener('DOMContentLoaded', function () {
+    const imageModal = document.getElementById('imageModal');
+    if (imageModal) {
+        imageModal.addEventListener('show.bs.modal', function (event) {
+            const trigger = event.relatedTarget;
+            const src = trigger.getAttribute('data-img-src');
+            const caption = trigger.getAttribute('data-caption');
+
+            document.getElementById('modalImage').src = src;
+            document.getElementById('modalCaption').textContent = caption || '';
+            document.getElementById('imageModalLabel').textContent = caption || 'Field Training Photo';
+        });
+    }
+});
+
+
+
+    
+
 </script>
 
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="Project Image" class="img-fluid mb-4" style="max-height: 70vh; object-fit: contain;">
+                <h4 id="modalTitle" class="mb-3"></h4>
+                <p id="modalDesc" class="lead text-muted"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
