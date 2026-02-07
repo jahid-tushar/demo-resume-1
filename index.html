@@ -413,6 +413,56 @@
             height: 100%;
             border: none;
         }
+
+
+
+
+                .video-carousel-wrapper {
+            position: relative;
+        }
+        
+        .video-carousel {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        
+        .video-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .video-carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .video-carousel::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .video-card h5 {
+            font-size: 1.05rem;
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+
+
+
+        
         
         
     </style>
@@ -840,6 +890,227 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+<!-- Practical Demonstrations - Screen Recordings -->
+<section id="demos" class="section bg-white">
+    <div class="container">
+        <h2 class="section-title text-center">Practical Demonstrations – GIS & Remote Sensing Workflows</h2>
+        <p class="text-center lead mb-5">
+            A collection of screen-recorded demonstrations showcasing real-world GIS/RS workflows, 
+            client projects, university assignments, personal research, and tool explorations — 
+            from data preparation to advanced analysis and visualization.
+        </p>
+
+        <!-- Horizontal scrollable video carousel -->
+        <div class="video-carousel-wrapper mt-4">
+            <div class="video-carousel d-flex flex-nowrap overflow-auto pb-4 gap-4">
+
+                <!-- 1. Time Series Animation - COVID-19 -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/730746508?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">COVID-19 Time Series Animation</h5>
+                </div>
+
+                <!-- 2. ArcGIS Online Interface -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/773712136?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Exploring ArcGIS Online Interface</h5>
+                </div>
+
+                <!-- 3. Hot Spot Analysis -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/787188216?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Hot Spot Analysis Demonstration</h5>
+                </div>
+
+                <!-- 4. Client Project - Remote Sensing & GIS -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/756643196?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Client Project – Remote Sensing & GIS Workflow</h5>
+                </div>
+
+                <!-- 5. OSM Interface -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/748640642?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">OpenStreetMap – Interface, Sharing & Editing</h5>
+                </div>
+
+                <!-- 6. Geo Check Screen Video -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/1109424728?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Georeferencing & Quality Check Workflow</h5>
+                </div>
+
+                <!-- 7. GEE SRTM Slope & Statistics -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/786782340?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Google Earth Engine – SRTM Slope & Zonal Statistics</h5>
+                </div>
+
+                <!-- 8. Landscape Transformation -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/784533122?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Landscape Change Detection Using Satellite Imagery</h5>
+                </div>
+
+                <!-- 9. Referencing Work -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/760724881?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Map Referencing & Georeferencing Techniques</h5>
+                </div>
+
+                <!-- 10. Downloading Satellite Images -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/764269872?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Downloading & Preprocessing Satellite Imagery (MSc Project)</h5>
+                </div>
+
+                <!-- 11. Earthquake Vulnerability -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/739259670?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Earthquake Vulnerability Mapping Project</h5>
+                </div>
+
+                <!-- 12. ERDAS Image Processing -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/735884067?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">ERDAS – Subset, Classification & NDVI Analysis</h5>
+                </div>
+
+                <!-- 13. COVID-19 Animated Documentation -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/732735121?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">COVID-19 Spread – Animated Documentation</h5>
+                </div>
+
+                <!-- 14. WordPress Website Update -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/732539052?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">WordPress Website Content & Update Demo</h5>
+                </div>
+
+                <!-- 15. Excel to Map -->
+                <div class="video-card flex-shrink-0" style="width: 360px;">
+                    <div class="ratio ratio-16x9 rounded shadow mb-3">
+                        <iframe src="https://player.vimeo.com/video/730693108?badge=0&autopause=0&player_id=0&app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                    </div>
+                    <h5 class="text-center mb-0">Converting Excel Data to Interactive Maps</h5>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="text-muted">
+                These recordings capture real workflows from academic, freelance, client, and personal projects.
+            </p>
+            <a href="https://vimeo.com/your-vimeo-profile" target="_blank" class="btn btn-outline-primary mt-2">
+                <i class="fab fa-vimeo-v me-2"></i> View More on Vimeo
+            </a>
+        </div>
+    </div>
+</section>
+    
+
+
+
+    
+
+
+    
 
 <!-- Professional Experience -->
 <section id="experience" class="section">
@@ -1628,6 +1899,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
