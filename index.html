@@ -462,24 +462,43 @@
 
 
 
-        
+/* Make navbar menu more compact - prevents wrapping */
+.navbar-nav .nav-link {
+    font-size: 0.94rem;           /* slightly smaller */
+    padding: 0.5rem 0.75rem;      /* less horizontal padding */
+    white-space: nowrap;          /* prevent word wrap inside links */
+}
+
+.navbar-nav {
+    flex-wrap: nowrap;            /* force single line */
+}
+
+/* On very small screens, still collapse normally */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-wrap: wrap;
+    }
+}        
         
         
     </style>
 </head>
 <body>
-<!-- Navigation - All sections visible, no wrapping -->
+<!-- Navigation - Clean, no wrapping, all sections visible -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-        <!-- Removed navbar-brand to save space -->
+        <!-- Empty brand area to maximize space for menu -->
+        <a class="navbar-brand fw-bold fs-4" href="#"></a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#featured">Featured Work</a></li>
-                <li class="nav-item"><a class="nav-link" href="#demos">Demonstrations</a></li>
+                <li class="nav-item"><a class="nav-link" href="#featured">Featured</a></li>
+                <li class="nav-item"><a class="nav-link" href="#demos">Demos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#tutorials">Tutorials</a></li>
                 <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                 <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
@@ -1904,6 +1923,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
