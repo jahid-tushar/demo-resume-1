@@ -398,7 +398,21 @@
         }
 
 
-
+        .pdf-preview-wrapper {
+            position: relative;
+            padding-top: 80%;           /* adjust ratio – 80% ≈ good for PDFs */
+            overflow: hidden;
+            background: #f1f3f5;
+        }
+        
+        .pdf-preview-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
         
         
     </style>
@@ -1386,6 +1400,78 @@
     </div>
 </section>
 
+<!-- Mapbook Section -->
+<section id="mapbook" class="section bg-light">
+    <div class="container">
+        <h2 class="section-title text-center">Mapbook Collection</h2>
+        <p class="text-center lead mb-5">
+            A curated selection of cartographic works and geospatial atlases showcasing population demographics, 
+            regional geography, topographic boundaries, and key landmarks.
+        </p>
+
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Mapbook 1 -->
+            <div class="col-lg-6 col-md-10">
+                <div class="card shadow-lg border-0 h-100 overflow-hidden">
+                    <div class="pdf-preview-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1R_3UlpmWQoLJYE8LIJ75q_l2b8n18MvR/preview"
+                                width="100%" 
+                                height="600" 
+                                style="border: none;"
+                                allowfullscreen 
+                                loading="lazy"></iframe>
+                    </div>
+                    <div class="card-body text-center p-4">
+                        <h4 class="card-title mb-3">World Atlas: A Visual Exploration of World Population Demographics</h4>
+                        <p class="text-muted mb-4">
+                            Global population insights through thematic maps, density visualizations, and demographic patterns.
+                        </p>
+                        <a href="https://drive.google.com/uc?export=download&id=1R_3UlpmWQoLJYE8LIJ75q_l2b8n18MvR" 
+                           class="btn btn-download btn-lg" 
+                           download>
+                            <i class="fas fa-file-pdf me-2"></i> Download World Atlas (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapbook 2 -->
+            <div class="col-lg-6 col-md-10">
+                <div class="card shadow-lg border-0 h-100 overflow-hidden">
+                    <div class="pdf-preview-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1CnldqukxHujlvVzyc3i8VNjW5d_xCU4Z/preview"
+                                width="100%" 
+                                height="600" 
+                                style="border: none;"
+                                allowfullscreen 
+                                loading="lazy"></iframe>
+                    </div>
+                    <div class="card-body text-center p-4">
+                        <h4 class="card-title mb-3">Bangladesh Regional Geoatlas: Mapping Topographic Boundaries and Landmarks</h4>
+                        <p class="text-muted mb-4">
+                            Detailed regional atlas featuring topographic features, administrative boundaries, and key landmarks of Bangladesh.
+                        </p>
+                        <a href="https://drive.google.com/uc?export=download&id=1CnldqukxHujlvVzyc3i8VNjW5d_xCU4Z" 
+                           class="btn btn-download btn-lg" 
+                           download>
+                            <i class="fas fa-file-pdf me-2"></i> Download Bangladesh Geoatlas (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5 text-muted small">
+            <p>PDF previews are powered by Google Drive • Best viewed on desktop • Download for full-resolution experience</p>
+        </div>
+    </div>
+</section>
+
+
+
+    
 <!-- References -->
 <section id="references" class="section bg-light">
     <div class="container">
@@ -1542,6 +1628,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
