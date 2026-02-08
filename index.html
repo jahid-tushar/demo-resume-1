@@ -876,7 +876,30 @@
         .whatsapp-float {
             animation: pulse 2s infinite;
         }
+
+
+
+
+                /* Publication Poster Styling */
+        .poster-preview {
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: #f8f9fa;
+        }
         
+        .poster-preview:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+        }
+        
+        .poster-preview img {
+            transition: transform 0.45s ease;
+        }
+        
+        .poster-preview:hover img {
+            transform: scale(1.09);
+        }
+                
         
     </style>
 </head>
@@ -1983,23 +2006,63 @@
 <section id="publications" class="section">
     <div class="container">
         <h2 class="section-title text-center">Publications</h2>
+        <p class="text-center text-muted mb-5">
+            Peer-reviewed papers, conference presentations, and ongoing research
+        </p>
+
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <strong>Tushar et al. (2022).</strong> Land Use-Land Cover and Change Detection post-classification of Dhaka City Corporation Area (1972–2020). Jamal Nazrul Islam National Conference 2022, Chittagong, Bangladesh.
+
+                <!-- 1. Conference Poster with preview -->
+                <div class="card mb-4 shadow-sm border-0 overflow-hidden">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center g-4">
+                            <!-- Poster thumbnail -->
+                            <div class="col-md-4 col-12">
+                                <div class="poster-preview rounded overflow-hidden shadow">
+                                    <img src="GIS and RS_Experience_Collage/Poster_JNINC2022.jpg"
+                                         alt="Poster: Land Use-Land Cover and Change Detection – JNINC 2022"
+                                         class="img-fluid w-100"
+                                         style="height: 280px; object-fit: cover; object-position: top;">
+                                </div>
+                            </div>
+
+                            <!-- Text + link -->
+                            <div class="col-md-8 col-12">
+                                <h5 class="fw-bold mb-2">
+                                    Tushar et al. (2022)
+                                </h5>
+                                <p class="mb-3">
+                                    Land Use-Land Cover and Change Detection post-classification of Dhaka City Corporation Area (1972–2020).<br>
+                                    <em>Jamal Nazrul Islam National Conference 2022, Chittagong, Bangladesh</em>
+                                </p>
+
+                                <a href="GIS and RS_Experience_Collage/Poster_JNINC2022.jpg"
+                                   target="_blank"
+                                   class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-expand me-2"></i> View Conference Poster
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 2. Published Paper -->
                 <div class="card mb-3">
                     <div class="card-body">
-                        <strong>Quader et al. (2022).</strong> Factors of land cover change of Dhaka city through geospatial techniques. <em>Earth Systems and Environment</em>, 5(3), 105–119.
+                        <strong>Quader et al. (2022).</strong> Factors of land cover change of Dhaka city through geospatial techniques. 
+                        <em>Earth Systems and Environment</em>, 5(3), 105–119.
                     </div>
                 </div>
+
+                <!-- 3. In Progress -->
                 <div class="card">
                     <div class="card-body">
-                        <strong>Tushar et al.</strong> Disaster risk reduction through mangrove management: A case study of Sundarbans and surroundings. <em>Jagannath University Journal of Life and Earth Sciences</em>. (In progress)
+                        <strong>Tushar et al.</strong> Disaster risk reduction through mangrove management: A case study of Sundarbans and surroundings. 
+                        <em>Jagannath University Journal of Life and Earth Sciences</em>. (In progress)
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -2447,6 +2510,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </a>
 
 </html>
+
 
 
 
