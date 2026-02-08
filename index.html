@@ -2026,8 +2026,8 @@
                                          style="height: 280px; object-fit: cover; object-position: top;">
                                 </div>
                             </div>
-
-                            <!-- Text + link -->
+                
+                            <!-- Text + modal button -->
                             <div class="col-md-8 col-12">
                                 <h5 class="fw-bold mb-2">
                                     Tushar et al. (2022)
@@ -2036,12 +2036,13 @@
                                     Land Use-Land Cover and Change Detection post-classification of Dhaka City Corporation Area (1972–2020).<br>
                                     <em>Jamal Nazrul Islam National Conference 2022, Chittagong, Bangladesh</em>
                                 </p>
-
-                                <a href="GIS and RS_Experience_Collage/Poster_JNINC2022.jpg"
-                                   target="_blank"
-                                   class="btn btn-outline-primary btn-sm">
+                
+                                <button type="button" 
+                                        class="btn btn-outline-primary btn-sm"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#jnincPosterModal">
                                     <i class="fas fa-expand me-2"></i> View Conference Poster
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -2496,6 +2497,35 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     </div>
 </div>
+
+
+
+
+
+<!-- Modal for JNINC 2022 Poster -->
+<div class="modal fade" id="jnincPosterModal" tabindex="-1" aria-labelledby="jnincPosterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-light border-0">
+                <h5 class="modal-title fw-bold" id="jnincPosterModalLabel">
+                    Conference Poster – Jamal Nazrul Islam National Conference 2022
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-0">
+                <img src="GIS and RS_Experience_Collage/Poster_JNINC2022.jpg"
+                     alt="Poster: Land Use-Land Cover and Change Detection post-classification of Dhaka City Corporation Area (1972–2020)"
+                     class="img-fluid w-100 rounded-bottom"
+                     style="max-height: 85vh; object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    
 </body>
 
 
@@ -2510,6 +2540,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </a>
 
 </html>
+
 
 
 
