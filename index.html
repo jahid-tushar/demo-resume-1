@@ -803,6 +803,43 @@
 
 
 
+
+        /* Updated Navbar Link Styles */
+        .navbar-nav {
+            gap: 0.4rem;                    /* space between items */
+        }
+        
+        .navbar-nav .nav-link {
+            color: #ced4da !important;
+            font-weight: 500;
+            padding: 0.5rem 0.9rem !important;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--accent) !important;
+        }
+        
+        /* Growing centered underline on hover – clean & professional */
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2.5px;
+            bottom: 4px;
+            left: 50%;
+            background: var(--accent);
+            transition: width 0.35s ease, left 0.35s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .navbar-nav .nav-link:hover::after {
+            width: 70%;
+        }
+        
+
         
         
         
@@ -820,7 +857,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav mx-auto">           <!-- changed from ms-auto to mx-auto -->
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#featured">Featured</a></li>
                 <li class="nav-item"><a class="nav-link" href="#demos">Demos</a></li>
@@ -835,7 +872,6 @@
                 <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
                 <li class="nav-item"><a class="nav-link" href="#trainings">Trainings</a></li>
                 <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
-
             </ul>
         </div>
     </div>
@@ -2363,6 +2399,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
