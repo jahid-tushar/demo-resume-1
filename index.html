@@ -708,6 +708,56 @@
 
 
 
+
+                /* === Key Stats Bar === */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            position: relative;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-item small {
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 767px) {
+            .stat-item {
+                padding: 1.2rem 0.8rem;
+            }
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+        }
+        
+
+
+
         
         
         
@@ -781,6 +831,53 @@
            class="btn btn-download btn-lg mt-2">
             <i class="fas fa-file-arrow-down me-2"></i> Download Full CV
         </a>
+    </div>
+</section>
+
+
+
+    <!-- Key Stats / Metrics Bar -->
+<section class="stats-bar py-5 bg-gradient-primary text-white">
+    <div class="container">
+        <div class="row text-center g-4">
+
+            <!-- Stat 1 -->
+            <div class="col-md-3 col-6">
+                <div class="stat-item">
+                    <h3 class="fw-bold mb-1">150+</h3>
+                    <p class="mb-0">Participants Trained</p>
+                    <small class="opacity-75">Nationwide GIS/RS sessions</small>
+                </div>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="col-md-3 col-6">
+                <div class="stat-item">
+                    <h3 class="fw-bold mb-1">35%</h3>
+                    <p class="mb-0">Rework Reduction</p>
+                    <small class="opacity-75">Through QA automation</small>
+                </div>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="col-md-3 col-6">
+                <div class="stat-item">
+                    <h3 class="fw-bold mb-1">180+</h3>
+                    <p class="mb-0">Countries Reached</p>
+                    <small class="opacity-75">Via online GIS training</small>
+                </div>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="col-md-3 col-6">
+                <div class="stat-item">
+                    <h3 class="fw-bold mb-1">40+</h3>
+                    <p class="mb-0">Professional Maps</p>
+                    <small class="opacity-75">Created across projects</small>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
@@ -2191,6 +2288,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
