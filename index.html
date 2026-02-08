@@ -650,7 +650,60 @@
             }
         }
         
-
+        /* === Hero GIS/RS Theme Background === */
+        .hero {
+            background: #0d1b2a; /* fallback dark color */
+            min-height: 100vh;
+            padding: 180px 0 140px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/gis-background.jpg') center/cover no-repeat; /* ← upload your background image here */
+            opacity: 0.25; /* semi-transparent */
+            z-index: 0;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,107,166,0.35) 0%, rgba(0,180,216,0.25) 100%);
+            /* Optional subtle grid pattern */
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+        
+        .profile-img {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border: 8px solid rgba(255,255,255,0.95);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.45);
+            margin-top: -40px;
+            z-index: 1;
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .hero { padding: 160px 0 120px; }
+            .profile-img { width: 200px; height: 200px; margin-top: -30px; }
+        }
+        
+        @media (max-width: 767px) {
+            .hero { padding: 140px 0 100px; }
+            .profile-img { width: 170px; height: 170px; margin-top: -20px; }
+            .overlay-text { font-size: 1rem; }
+        }
 
 
 
@@ -702,7 +755,7 @@
     <div class="hero-overlay"></div>
 
     <div class="container position-relative z-1">
-        <img src="GIS and RS_Experience_Collage/cover_photo.jpg" 
+        <img src="GIS and RS_Experience_Collage/5_Professional Photo.jpeg" 
              alt="Mohammad Jahidul Islam Tushar" 
              class="rounded-circle profile-img mb-4 shadow-lg">
 
@@ -2138,6 +2191,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
