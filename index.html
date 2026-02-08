@@ -882,29 +882,58 @@
 
 
         
-                /* Hero Contact Info - Clean one-line layout */
+        /* Hero Contact - Balanced two-line layout */
         .hero-contact {
             font-weight: 400;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
         }
         
-        .hero-contact > div {
-            transition: transform 0.25s ease, color 0.25s ease;
+        .hero-contact .d-flex > div {
+            white-space: nowrap;
         }
         
         .hero-contact i {
-            font-size: 1.1rem;
+            color: var(--accent);
+            width: 22px;
+            text-align: center;
+            font-size: 1.15rem;
             transition: transform 0.25s ease;
         }
         
+        .hero-contact a,
+        .hero-contact span {
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+        
         .hero-contact a:hover,
-        .hero-contact > div:hover {
+        .hero-contact div:hover {
             color: var(--accent) !important;
             transform: translateY(-2px);
         }
         
         .hero-contact a:hover i {
-            transform: scale(1.2);
+            transform: scale(1.25);
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 991px) {
+            .hero-contact {
+                gap: 1.8rem !important;
+                font-size: 1.05rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-contact {
+                flex-direction: column;
+                gap: 1.1rem;
+                font-size: 1rem;
+            }
+            
+            .hero-contact .d-flex {
+                flex-direction: column;
+                gap: 0.9rem;
+            }
         }
         
         /* Mobile - allow wrapping naturally but keep centered */
@@ -994,34 +1023,43 @@
         
 
 
-    <div class="hero-contact mt-4 mb-5 text-center text-white text-shadow fs-5">
-        <div class="d-flex flex-wrap justify-content-center gap-4 gap-md-5 mb-3">
+    <!-- Hero Contact Info - Balanced two-line layout -->
+    <div class="hero-contact mt-4 mb-5 text-center text-white text-shadow">
+        <!-- First line -->
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 gap-md-5 mb-3 fs-5">
             <div class="d-flex align-items-center">
-                <i class="fas fa-map-marker-alt me-2 text-accent"></i>
-                Dhaka, Bangladesh
+                <i class="fas fa-map-marker-alt me-2 fs-6"></i>
+                <span>Dhaka, Bangladesh</span>
             </div>
+    
             <div class="d-flex align-items-center">
-                <i class="fas fa-phone-alt me-2 text-accent"></i>
-                <a href="tel:+8801521108306" class="text-white text-decoration-none">+880 1521-108306</a>
+                <i class="fas fa-phone-alt me-2 fs-6"></i>
+                <a href="tel:+8801521108306" class="text-white text-decoration-none">
+                    +880 1521-108306
+                </a>
+            </div>
+    
+            <div class="d-flex align-items-center">
+                <i class="fas fa-envelope me-2 fs-6"></i>
+                <a href="mailto:jahidhtushar448@gmail.com" class="text-white text-decoration-none">
+                    jahidhtushar448@gmail.com
+                </a>
             </div>
         </div>
     
-        <div class="d-flex flex-wrap justify-content-center gap-4 gap-md-5">
+        <!-- Second line (shorter items grouped together) -->
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 gap-md-5 fs-5">
             <div class="d-flex align-items-center">
-                <i class="fas fa-envelope me-2 text-accent"></i>
-                <a href="mailto:jahidhtushar448@gmail.com" class="text-white text-decoration-none">jahidhtushar448@gmail.com</a>
-            </div>
-            <div class="d-flex align-items-center">
-                <i class="fab fa-linkedin me-2 text-accent"></i>
-                <a href="https://www.linkedin.com/in/jahid-tushar1996" 
-                   target="_blank" 
+                <i class="fab fa-linkedin me-2 fs-6"></i>
+                <a href="https://www.linkedin.com/in/jahid-tushar1996"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="text-white text-decoration-none">
                     linkedin.com/in/jahid-tushar1996
                 </a>
             </div>
         </div>
     </div>
-            
 
 
         
@@ -2519,6 +2557,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </a>
 
 </html>
+
 
 
 
