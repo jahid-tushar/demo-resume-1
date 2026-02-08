@@ -882,21 +882,21 @@
 
 
         
-        /* Hero Contact - Balanced two-line layout */
+        /* Hero Contact - Two balanced lines */
         .hero-contact {
             font-weight: 400;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
         }
         
-        .hero-contact .d-flex > div {
+        .hero-contact .d-flex {
             white-space: nowrap;
         }
         
         .hero-contact i {
             color: var(--accent);
-            width: 22px;
+            width: 24px;
             text-align: center;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             transition: transform 0.25s ease;
         }
         
@@ -912,27 +912,27 @@
         }
         
         .hero-contact a:hover i {
-            transform: scale(1.25);
+            transform: scale(1.2);
         }
         
         /* Mobile adjustments */
         @media (max-width: 991px) {
             .hero-contact {
-                gap: 1.8rem !important;
-                font-size: 1.05rem;
+                gap: 2.5rem !important;
+                font-size: 1.1rem;
             }
         }
         
         @media (max-width: 576px) {
             .hero-contact {
                 flex-direction: column;
-                gap: 1.1rem;
+                gap: 1.4rem;
                 font-size: 1rem;
             }
             
             .hero-contact .d-flex {
                 flex-direction: column;
-                gap: 0.9rem;
+                gap: 1.1rem;
             }
         }
         
@@ -1023,10 +1023,10 @@
         
 
 
-    <!-- Hero Contact Info - Balanced two-line layout -->
+    <!-- Hero Contact Info - Two balanced lines -->
     <div class="hero-contact mt-4 mb-5 text-center text-white text-shadow">
-        <!-- First line -->
-        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 gap-md-5 mb-3 fs-5">
+        <!-- First line: Location + Phone -->
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-5 gap-md-5 mb-3 fs-5">
             <div class="d-flex align-items-center">
                 <i class="fas fa-map-marker-alt me-2 fs-6"></i>
                 <span>Dhaka, Bangladesh</span>
@@ -1038,17 +1038,17 @@
                     +880 1521-108306
                 </a>
             </div>
+        </div>
     
+        <!-- Second line: Email + LinkedIn -->
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-5 gap-md-5 fs-5">
             <div class="d-flex align-items-center">
                 <i class="fas fa-envelope me-2 fs-6"></i>
                 <a href="mailto:jahidhtushar448@gmail.com" class="text-white text-decoration-none">
                     jahidhtushar448@gmail.com
                 </a>
             </div>
-        </div>
     
-        <!-- Second line (shorter items grouped together) -->
-        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 gap-md-5 fs-5">
             <div class="d-flex align-items-center">
                 <i class="fab fa-linkedin me-2 fs-6"></i>
                 <a href="https://www.linkedin.com/in/jahid-tushar1996"
@@ -2557,6 +2557,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </a>
 
 </html>
+
 
 
 
