@@ -754,7 +754,52 @@
                 font-size: 2rem;
             }
         }
+
+
+
+
+
+
+                /* === Hero Slideshow Background === */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: #0d1b2a; /* fallback color */
+        }
         
+        .hero-slideshow {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 0.35; /* semi-transparent so text remains readable */
+        }
+        
+        /* Overlay to make text pop more */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(13, 27, 42, 0.55); /* dark overlay */
+            z-index: 1;
+        }
+        
+        /* Your existing content stays above */
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
 
 
 
@@ -796,37 +841,40 @@
     </div>
 </nav>
 
-<!-- Hero with GIS/RS Theme Background -->
+<!-- Hero with Slideshow Background -->
 <section class="hero text-center position-relative overflow-hidden">
-    <!-- Background layer -->
-    <div class="hero-bg"></div>
-    
-    <!-- Subtle overlay grid/pattern -->
+    <!-- Slideshow container -->
+    <div class="hero-slideshow">
+        <div class="slide active" style="background-image: url('GIS and RS_Experience_Collage/cover_photo.jpg');"></div>
+        <div class="slide" style="background-image: url('GIS and RS_Experience_Collage/cover_photo2.png');"></div>
+        <div class="slide" style="background-image: url('GIS and RS_Experience_Collage/cover_photo3.png.jpg');"></div>
+        <!-- Add more images here if you want (5-8 is ideal) -->
+        <!-- <div class="slide" style="background-image: url('images/hero-gis-5.jpg');"></div> -->
+    </div>
+
+    <!-- Dark overlay to make text readable -->
     <div class="hero-overlay"></div>
 
+    <!-- Your existing content – stays on top -->
     <div class="container position-relative z-1">
-        <img src="GIS and RS_Experience_Collage/5_Professional Photo.jpeg" 
+        <img src="images/profile.jpg" 
              alt="Mohammad Jahidul Islam Tushar" 
              class="rounded-circle profile-img mb-4 shadow-lg">
-
-        <h1 class="display-3 fw-bold mb-2 mt-3 text-white text-shadow">
-            Mohammad Jahidul Islam Tushar
-        </h1>
-        <h3 class="fw-light mb-4 text-white text-shadow">
-            Deputy GIS Specialist | Spatial Analysis & Remote Sensing
-        </h3>
-
+        
+        <h1 class="display-3 fw-bold mb-2 mt-3 text-white text-shadow">Mohammad Jahidul Islam Tushar</h1>
+        <h3 class="fw-light mb-4 text-white text-shadow">Deputy GIS Specialist | Spatial Analysis & Remote Sensing</h3>
+        
         <p class="lead mb-4 text-white text-shadow">
             <i class="fas fa-map-marker-alt me-2"></i> Dhaka, Bangladesh
         </p>
-
+        
         <p class="mb-5 fs-5 contact-info text-white text-shadow">
             <i class="fas fa-phone me-2"></i> +880 1521-108306<br>
             <i class="fas fa-envelope me-2"></i> jahidhtushar448@gmail.com<br>
             <i class="fab fa-linkedin me-2"></i>
             <a href="https://www.linkedin.com/in/jahid-tushar1996" class="text-white text-decoration-none">linkedin.com/in/jahid-tushar1996</a>
         </p>
-
+        
         <a href="documents/CV_Mohammad_Jahidul_Islam_Tushar.pdf" download 
            class="btn btn-download btn-lg mt-2">
             <i class="fas fa-file-arrow-down me-2"></i> Download Full CV
@@ -2263,6 +2311,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+
+
+// Hero background slideshow
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.hero-slideshow .slide');
+    if (slides.length <= 1) return; // no need if only one image
+
+    let current = 0;
+    slides[0].classList.add('active');
+
+    setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }, 6000); // change every 6 seconds
+});
+
+
+    
     
 
 </script>
@@ -2288,6 +2356,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+
 
 
 
